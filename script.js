@@ -5,162 +5,371 @@ if (window.Telegram && window.Telegram.WebApp) {
     tg = window.Telegram.WebApp;
     tg.ready();
     tg.expand();
-}// Memperbesar tampilan mini app
+}
 
-        // Fallback gambar jika gambar belum ada di folder
-        function getImageUrl(filename, appName) {
-            return filename;
-        }
-        function handleImageError(imgElement, appName) {
-            // Jika gambar lokal gagal dimuat, gunakan placeholder vintage
-            imgElement.onerror = null; 
-            imgElement.src = `https://placehold.co/100x100/FFF9EF/73151B?text=${appName.substring(0,3).toUpperCase()}`;
-        }
+// Fallback gambar jika gambar belum ada di folder
+function getImageUrl(filename, appName) {
+    return filename;
+}
 
-        // SEMUA DATA DAN HARGA BERADA DI SINI. SANGAT MUDAH DIUBAH.
-        // Anda tinggal mengganti angka 0 menjadi harga yang diinginkan.
-        const database = [
-            // ================== STREAMING APPS ==================
-            {
-                category: 'STREAMING APPS', id: 'netflix', name: 'Netflix', image: 'image/netflix.webp',
-                stepLabels: ['Choose your plan', 'Choose duration'],
-                data: {
-                    'SHARING': {
-                        '1 DAY': 4000, '2 DAYS': 5000, '3 DAYS': 7000, '5 DAYS': 9000, '7 DAYS': 11000, '14 DAYS': 20000, '21 DAYS': 30000, '1 MONTH': 39000
-                    },
-                    'PRIVATE': {
-                        '1 MONTH': 165000
-                    }
-                }
-            },
-            {
-                category: 'STREAMING APPS', id: 'disney', name: 'Disney', image: 'image/disney.webp',
-                stepLabels: ['Choose your plan', 'Choose duration'],
-                data: {
-                    'SHARING': { '1 DAY': 3000, '2 DAYS': 5000, '3 DAYS': 8000, '5 DAYS': 10000, '7 DAYS': 13000, '14 DAYS': 20000, '21 DAYS': 28000, '1 MONTH': 31000 },
-                    'PRIVATE': { '1 MONTH': 130000 }
-                }
-            },
-            {
-                category: 'STREAMING APPS', id: 'viu', name: 'Viu', image: 'image/viu.png',
-                stepLabels: ['Choose your plan', 'Choose duration'],
-                data: {
-                    'PRIVATE ANTI LIMIT': {
-                        '1 DAY': 1000, '2 DAYS': 2000, '3 DAYS': 3000, '5 DAYS': 4000, '7 DAYS': 5000, 
-                        '1 MONTH': 6000, '2 MONTHS': 9000, '3 MONTHS': 12000, '4 MONTHS': 15000, '5 MONTHS': 18000, '6 MONTHS': 20000, '1 YEAR': 30000
-                    }
-                }
-            },
-            {
-                category: 'STREAMING APPS', id: 'iqiyi', name: 'iQIYI', image: 'image/iqiyi.png',
-                stepLabels: ['Choose your plan', 'Choose duration'],
-                data: {
-                    'SHARING STANDARD': { '1 MONTH': 8000, '3 MONTHS': 15000 },
-                    'SHARING PREMIUM': { '1 MONTH': 10000, '3 MONTHS': 18000 },
-                    'PRIVATE STANDARD': { '1 MONTH': 32000 },
-                    'PRIVATE PREMIUM': { '1 MONTH': 37000 } // Digabungkan dari duplikat di prompt
-                }
-            },
-            {
-                category: 'STREAMING APPS', id: 'wetv', name: 'WeTV', image: 'image/wetv.jpeg',
-                stepLabels: ['Choose your plan', 'Choose duration'],
-                data: {
-                    'SHARING': { '1 MONTH': 11000 },
-                    'ANTILIMIT': { '1 MONTH': 18000 },
-                    'PRIVATE': { '1 MONTH': 35000 }
-                }
-            },
-            {
-                category: 'STREAMING APPS', id: 'hbo', name: 'HBO', image: 'image/hbo.png',
-                stepLabels: ['Choose your plan', 'Choose duration'],
-                data: {
-                    'SHARING': { '1 DAY': 3500, '3 DAYS': 7000, '7 DAYS': 13000, '1 MONTH': 20000 },
-                    'PRIVATE BASIC': { '1 MONTH': 45000 },
-                    'PRIVATE ULTIMATE': { '1 MONTH': 90000 }
-                }
-            },
-            {
-                category: 'STREAMING APPS', id: 'bstation', name: 'Bstation', image: 'image/bstation.jpeg',
-                stepLabels: ['Choose your plan', 'Choose duration'],
-                data: {
-                    'SHARING': { '1 MONTH': 10000 },
-                    'PRIVATE': { '1 MONTH': 40000 }
-                }
-            },
-            {
-                category: 'STREAMING APPS', id: 'loklok', name: 'Loklok', image: 'image/loklok.jpeg',
-                stepLabels: ['Choose your plan', 'Choose duration'],
-                data: {
-                    'SHARING BASIC': { '1 MONTH': 20000 },
-                    'SHARING STANDART': { '1 MONTH': 25000 }
-                }
-            },
-            {
-                category: 'STREAMING APPS', id: 'youku', name: 'Youku', image: 'image/youku.png',
-                stepLabels: ['Choose your plan', 'Choose duration'],
-                data: {
-                    'SHARING': { '1 MONTH': 9000, '3 MONTHS': 15000 }
-                }
-            },
-            {
-                category: 'STREAMING APPS', id: 'pidioookk', name: 'Pidioookk', image: 'image/vidio.png',
-                stepLabels: ['Choose device', 'Choose plan', 'Choose duration'], // 3 Tahap khusus Pidioookk
-                data: {
-                    'TV': { 'SHARING': { '1 MONTH': 17000 } },
-                    'MOBILE': { 'SHARING': { '1 MONTH': 28000 } },
-                    'ALL DEVICE': { 'SHARING': { '1 MONTH': 44000 } }
-                }
-            },
-            {
-                category: 'STREAMING APPS', id: 'youtube', name: 'YouTube', image: 'image/youtube.png',
-                stepLabels: ['Choose your plan', 'Choose duration'],
-                data: {
-                    'FAMPLAN': { '1 MONTH': 10000, '2 MONTHS': 20000 },
-                    'INDPLAN': { '1 MONTH': 25000, '2 MONTHS': 40000 }
-                }
-            },
-            {
-                category: 'STREAMING APPS', id: 'gagaoolala', name: 'GagaOOLala', image: 'image/gagaoolala.png',
-                stepLabels: ['Choose your plan', 'Choose duration'],
-                data: {
-                    'SHARING': { '1 MONTH': 13000 }
-                }
-            },
-            {
-                category: 'STREAMING APPS', id: 'amazon-prime', name: 'Amazon Prime', image: 'image/prime.webp',
-                stepLabels: ['Choose your plan', 'Choose duration'],
-                data: {
-                    'SHARING': { '1 DAY': 2000, '3 DAYS': 4000, '7 DAYS': 6000, '1 MONTH (4U)': 8000, '1 MONTH (2U)': 10000 },
-                    'PRIVATE': { '1 MONTH': 18000 }
-                }
-            },
-            // ================== EDITING APPS ==================
-            {
-                category: 'EDITING APPS', id: 'canva', name: 'Canva', image: 'image/canva.jpeg',
-                stepLabels: ['Choose your plan', 'Choose duration'],
-                data: {
-                    'MEMBER': { '1 DAY': 1000, '3 DAYS': 2000, '7 DAYS': 3000, '1 MONTH': 10000, '2 MONTHS': 12000, '3 MONTHS': 14000, '4 MONTHS': 16000, '5 MONTHS': 18000, '6 MONTHS': 20000 },
-                    'DESIGNER': { '1 DAY': 1000, '3 DAYS': 2000, '7 DAYS': 3000, '1 MONTH': 10000, '2 MONTHS': 12000, '3 MONTHS': 14000, '4 MONTHS': 16000, '5 MONTHS': 18000, '6 MONTHS': 20000 }
-                }
-            },
-            {
-                category: 'EDITING APPS', id: 'capcut', name: 'CapCut', image: 'image/capcut.png',
-                stepLabels: ['Choose your plan', 'Choose duration'],
-                data: {
-                    'SHARING': { '1 DAY': 3000, '2 DAYS': 5000, '3 DAYS': 6000, '7 DAYS': 8000 },
-                    'PRIVATE': { '7 DAYS': 20000, '1 MONTH': 35000 }
-                }
-            },
-            {
-                category: 'EDITING APPS', id: 'alight-motion', name: 'Alight Motion', image: 'image/alight.jpeg',
-                stepLabels: ['Choose your plan', 'Choose duration'],
-                data: {
-                    'SHARING': { '1 DAY': 1000, '7 DAYS': 3000, '1 MONTH': 6000, '2 MONTHS': 8000, '3 MONTHS': 9000, '4 MONTHS': 10000, '5 MONTHS': 11000, '6 MONTHS': 12000, '1 YEAR': 15000 },
-                    'PRIVATE': { '7 DAYS': 5000, '1 MONTH': 13000, '1 YEAR': 20000 } 
-                }
+function handleImageError(imgElement, appName) {
+    imgElement.onerror = null;
+    imgElement.src = `https://placehold.co/100x100/FFF9EF/73151B?text=${appName.substring(0,3).toUpperCase()}`;
+}
 
+// ============================================================
+// DATABASE
+// ============================================================
+
+const database = [
+
+    // ================== STREAMING APPS ==================
+
+    {
+        category: 'STREAMING APPS',
+        id: 'netflix',
+        name: 'Netflix',
+        image: 'image/netflix.webp',
+        stepLabels: ['Choose your plan', 'Choose duration'],
+        data: {
+            'SHARING': {
+                '1 DAY': 3500,
+                '2 DAYS': 5000,
+                '3 DAYS': 7000,
+                '5 DAYS': 9000,
+                '7 DAYS': 12000,
+                '14 DAYS': 20000,
+                '21 DAYS': 30000,
+                '1 MONTH': 39000
+            },
+            'PRIVATE': {
+                '1 MONTH': 165000
             }
-        ];
+        }
+    },
+
+    {
+        category: 'STREAMING APPS',
+        id: 'disney',
+        name: 'Disney',
+        image: 'image/disney.webp',
+        stepLabels: ['Choose your plan', 'Choose duration'],
+        data: {
+            'SHARING': {
+                '1 DAY': 3000,
+                '2 DAYS': 6000,
+                '3 DAYS': 8000,
+                '5 DAYS': 10000,
+                '7 DAYS': 13000,
+                '14 DAYS': 20000,
+                '21 DAYS': 28000,
+                '1 MONTH': 30000
+            },
+            'PRIVATE': {
+                '1 MONTH': 130000
+            }
+        }
+    },
+
+    {
+        category: 'STREAMING APPS',
+        id: 'viu',
+        name: 'Viu',
+        image: 'image/viu.png',
+        stepLabels: ['Choose your plan', 'Choose duration'],
+        data: {
+            'PRIVATE ANTI LIMIT': {
+                '1 DAY': 1000,
+                '2 DAYS': 2000,
+                '3 DAYS': 3000,
+                '5 DAYS': 4000,
+                '7 DAYS': 5000,
+                '1 MONTH': 6000,
+                '2 MONTHS': 9000,
+                '3 MONTHS': 14000,
+                '4 MONTHS': 16000,
+                '5 MONTHS': 18000,
+                '6 MONTHS': 20000,
+                '1 YEAR': 30000
+            }
+        }
+    },
+
+    {
+        category: 'STREAMING APPS',
+        id: 'iqiyi',
+        name: 'iQIYI',
+        image: 'image/iqiyi.png',
+        stepLabels: ['Choose your plan', 'Choose duration'],
+        data: {
+            'SHARING STANDARD': {
+                '1 MONTH': 8000,
+                '3 MONTHS': 15000
+            },
+            'SHARING PREMIUM': {
+                '1 MONTH': 10000,
+                '3 MONTHS': 18000
+            },
+            'PRIVATE STANDARD': {
+                '1 MONTH': 32000
+            },
+            'PRIVATE PREMIUM': {
+                '1 MONTH': 37000
+            }
+        }
+    },
+
+    {
+        category: 'STREAMING APPS',
+        id: 'wetv',
+        name: 'WeTV',
+        image: 'image/wetv.jpeg',
+        stepLabels: ['Choose your plan', 'Choose duration'],
+        data: {
+            'SHARING': {
+                '1 MONTH': 13000
+            },
+            'ANTILIMIT': {
+                '1 MONTH': 20000
+            },
+            'PRIVATE': {
+                '1 MONTH': 35000
+            }
+        }
+    },
+
+    {
+        category: 'STREAMING APPS',
+        id: 'hbo',
+        name: 'HBO',
+        image: 'image/hbo.png',
+        stepLabels: ['Choose your plan', 'Choose duration'],
+        data: {
+            'SHARING': {
+                '1 DAY': 3500,
+                '3 DAYS': 7000,
+                '7 DAYS': 13000,
+                '1 MONTH': 20000
+            },
+            'PRIVATE BASIC': {
+                '1 MONTH': 45000
+            },
+            'PRIVATE ULTIMATE': {
+                '1 MONTH': 90000
+            }
+        }
+    },
+
+    {
+        category: 'STREAMING APPS',
+        id: 'bstation',
+        name: 'Bstation',
+        image: 'image/bstation.jpeg',
+        stepLabels: ['Choose your plan', 'Choose duration'],
+        data: {
+            'SHARING': {
+                '1 MONTH': 10000
+            },
+            'PRIVATE': {
+                '1 MONTH': 40000
+            }
+        }
+    },
+
+    {
+        category: 'STREAMING APPS',
+        id: 'loklok',
+        name: 'Loklok',
+        image: 'image/loklok.jpeg',
+        stepLabels: ['Choose your plan', 'Choose duration'],
+        data: {
+            'SHARING BASIC': {
+                '1 MONTH': 20000
+            },
+            'SHARING STANDART': {
+                '1 MONTH': 25000
+            }
+        }
+    },
+
+    {
+        category: 'STREAMING APPS',
+        id: 'youku',
+        name: 'Youku',
+        image: 'image/youku.png',
+        stepLabels: ['Choose your plan', 'Choose duration'],
+        data: {
+            'SHARING': {
+                '1 MONTH': 9000,
+                '3 MONTHS': 15000
+            }
+        }
+    },
+
+    {
+        category: 'STREAMING APPS',
+        id: 'pidioookk',
+        name: 'Pidioookk',
+        image: 'image/vidio.png',
+        stepLabels: ['Choose device', 'Choose plan', 'Choose duration'],
+        data: {
+            'TV': {
+                'PRIVATE': {
+                    '1 MONTH': 17000
+                }
+            },
+            'MOBILE': {
+                'PRIVATE': {
+                    '1 MONTH': 28000
+                }
+            },
+            'ALL DEVICE': {
+                'PRIVATE': {
+                    '1 MONTH': 43000
+                }
+            }
+        }
+    },
+
+    {
+        category: 'STREAMING APPS',
+        id: 'youtube',
+        name: 'YouTube',
+        image: 'image/youtube.png',
+        stepLabels: ['Choose your plan', 'Choose duration'],
+        data: {
+            'FAMPLAN': {
+                '1 MONTH': 10000,
+                '2 MONTHS': 20000
+            },
+            'INDPLAN': {
+                '1 MONTH': 25000,
+                '2 MONTHS': 40000
+            }
+        }
+    },
+
+    {
+        category: 'STREAMING APPS',
+        id: 'gagaoolala',
+        name: 'GagaOOLala',
+        image: 'image/gagaoolala.png',
+        stepLabels: ['Choose your plan', 'Choose duration'],
+        data: {
+            'SHARING': {
+                '1 MONTH': 13000
+            }
+        }
+    },
+
+    {
+        category: 'STREAMING APPS',
+        id: 'amazon-prime',
+        name: 'Amazon Prime',
+        image: 'image/prime.webp',
+        stepLabels: ['Choose your plan', 'Choose duration'],
+        data: {
+            'SHARING': {
+                '1 DAY': 2000,
+                '3 DAYS': 4000,
+                '7 DAYS': 6000,
+                '1 MONTH (4U)': 8000,
+                '1 MONTH (2U)': 10000
+            },
+            'PRIVATE': {
+                '1 MONTH': 18000
+            }
+        }
+    },
+
+    // ================== EDITING APPS ==================
+
+    {
+        category: 'EDITING APPS',
+        id: 'canva',
+        name: 'Canva',
+        image: 'image/canva.jpeg',
+
+        // EMAIL KHUSUS CANVA
+        stepLabels: ['Choose your plan', 'Choose duration'],
+
+        data: {
+            'MEMBER': {
+                '1 DAY': 1000,
+                '3 DAYS': 2000,
+                '7 DAYS': 3000,
+                '1 MONTH': 10000,
+                '2 MONTHS': 12000,
+                '3 MONTHS': 14000,
+                '4 MONTHS': 16000,
+                '5 MONTHS': 18000,
+                '6 MONTHS': 20000
+            },
+
+            'DESIGNER': {
+                '1 DAY': 1000,
+                '3 DAYS': 2000,
+                '7 DAYS': 3000,
+                '1 MONTH': 10000,
+                '2 MONTHS': 12000,
+                '3 MONTHS': 14000,
+                '4 MONTHS': 16000,
+                '5 MONTHS': 18000,
+                '6 MONTHS': 20000
+            }
+        }
+    },
+
+    {
+        category: 'EDITING APPS',
+        id: 'capcut',
+        name: 'CapCut',
+        image: 'image/capcut.png',
+
+        // CAPCUT TIDAK ADA EMAIL
+        stepLabels: ['Choose your plan', 'Choose duration'],
+
+        data: {
+            'SHARING': {
+                '1 DAY': 3000,
+                '2 DAYS': 5000,
+                '3 DAYS': 6000,
+                '7 DAYS': 8000
+            },
+            'PRIVATE': {
+                '7 DAYS': 20000,
+                '1 MONTH': 35000
+            }
+        }
+    },
+
+    {
+        category: 'EDITING APPS',
+        id: 'alight-motion',
+        name: 'Alight Motion',
+        image: 'image/alight.jpeg',
+        stepLabels: ['Choose your plan', 'Choose duration'],
+        data: {
+            'SHARING': {
+                '1 DAY': 1000,
+                '7 DAYS': 3000,
+                '1 MONTH': 6000,
+                '2 MONTHS': 8000,
+                '3 MONTHS': 9000,
+                '4 MONTHS': 10000,
+                '5 MONTHS': 11000,
+                '6 MONTHS': 12000,
+                '1 YEAR': 15000
+            },
+            'PRIVATE': {
+                '7 DAYS': 5000,
+                '1 MONTH': 13000,
+                '1 YEAR': 20000
+            }
+        }
+    }
+];
+
 
 // ============================================================
 // STATE
@@ -1062,6 +1271,3 @@ function showToast(message) {
 
     }, 2500);
 }
-                toast.classList.remove('show');
-            }, 2500);
-        }
