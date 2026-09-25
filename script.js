@@ -1419,10 +1419,20 @@ function processOrder() {
     let totalPrice = 0;
 
     let orderText =
+// AMBIL ISIAN DARI FORM CART 
+    const username = document.getElementById('order-username')?.value.trim() 
+    || '@__________'; 
+    const device = document.getElementById('order-device')?.value.trim() 
+    || '________________'; 
+    const payment = document.getElementById('order-payment')?.value 
+    || 'QRIS'; 
+
+    // HEADER STRUK 
+    let orderText =
 `╭──────────────────────────╮
-│        NASNOWCI          │
-│          ORDER           │
-╰──────────────────────────╯
+ │        NASNOWCI          │
+ │          ORDER           │
+ ╰──────────────────────────╯
 
 PESANAN
 ────────────────────────────
@@ -1455,26 +1465,18 @@ PESANAN
     });
 
     orderText +=
-`────────────────────────────
-TOTAL
-${formatRupiah(totalPrice)}
-────────────────────────────
+`──────────────────────────── 
+TOTAL ${formatRupiah(totalPrice)} 
+──────────────────────────── 
 
-CUSTOMER
-────────────────────────────
-
-Username
-@__________
-
-Device Login
-________________
-
-Payment
-QRIS
-
-────────────────────────────
-       THANK YOU ♡
-      NASNOWCI STORE
+CUSTOMER IDENTITY
+──────────────────────────── 
+Username ${username} 
+Device Login ${device} 
+Payment ${payment} 
+──────────────────────────── 
+        THANK YOU ♡ 
+        NASNOWCI 
 ────────────────────────────`;
 
 
