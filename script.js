@@ -1067,6 +1067,59 @@ function renderCart() {
         'cart-total-price'
     ).innerText =
         formatRupiah(totalPrice);
+
+    // Form data buyer untuk order
+    let orderForm = document.getElementById('order-form');
+
+    if (!orderForm) {
+        orderForm = document.createElement('div');
+        orderForm.id = 'order-form';
+        orderForm.style.cssText = `
+            margin: 16px 0;
+            padding: 14px;
+            border: 1px solid rgba(115, 21, 27, 0.25);
+            border-radius: 12px;
+            background: #fffaf2;
+        `;
+
+        orderForm.innerHTML = `
+            <div style="font-weight:700; margin-bottom:10px;">CUSTOMER</div>
+
+            <label style="display:block; font-size:13px; margin-bottom:5px;">Username Telegram</label>
+            <div style="display:flex; align-items:center; border:1px solid #73151B; border-radius:8px; overflow:hidden; background:#fff; margin-bottom:10px;">
+                <span style="padding:11px 0 11px 12px; color:#73151B; font-weight:600;">@</span>
+                <input
+                    type="text"
+                    id="order-username"
+                    placeholder="username"
+                    autocomplete="off"
+                    style="flex:1; min-width:0; border:0; outline:0; padding:11px 12px 11px 4px; font:inherit; background:transparent;"
+                >
+            </div>
+
+            <label style="display:block; font-size:13px; margin-bottom:5px;">Device Login</label>
+            <input
+                type="text"
+                id="order-device"
+                placeholder="contoh: Android / iPhone / Laptop"
+                style="width:100%; box-sizing:border-box; padding:11px 12px; border:1px solid #73151B; border-radius:8px; margin-bottom:10px; font:inherit;"
+            >
+
+            <label style="display:block; font-size:13px; margin-bottom:5px;">Payment</label>
+            <select
+                id="order-payment"
+                style="width:100%; box-sizing:border-box; padding:11px 12px; border:1px solid #73151B; border-radius:8px; font:inherit; background:#fff;"
+            >
+                <option value="QRIS">QRIS</option>
+                <option value="DANA">DANA</option>
+                <option value="GOPAY">GoPay</option>
+                <option value="OVO">OVO</option>
+                <option value="TRANSFER">Transfer</option>
+            </select>
+        `;
+
+        footer.insertBefore(orderForm, footer.firstChild);
+    }
 }
 
 
@@ -1122,32 +1175,54 @@ function processOrder() {
 
     let totalPrice = 0;
 
-    const username = document.getElementById('order-username')?.value.trim() || '@__________';
-    const device = document.getElementById('order-device')?.value.trim() || '________________';
-    const payment = document.getElementById('order-payment')?.value || 'QRIS';
+    const usernameInput = document.getElementById('order-username');
+    const deviceInput = document.getElementById('order-device');
+    const paymentInput = document.getElementById('order-payment');
 
-    let orderText = `╭──────────────────────────╮
-│        NASNOWCI                               │
-│          ORDER                                │
-╰──────────────────────────╯\n\nPESANAN
-────────────────────────────\n\n`;
+    // Buyer cukup mengetik username tanpa @
+    const usernameRaw = usernameInput?.value.trim().replace(/^@+/, '') || '';
+    const username = usernameRaw ? `@${usernameRaw}` : '@__________';
+    const device = deviceInput?.value.trim() || '________________';
+    const payment = paymentInput?.value || 'QRIS';
+
+    let orderText =
+        `━━━━━━━━━━━━━━━━━━━━
+` +
+        `       NASNOWCI
+` +
+        `         ORDER
+` +
+        `━━━━━━━━━━━━━━━━━━━━
+` +
+        `PESANAN
+`;
 
     cart.forEach((item, index) => {
+
         const subtotal = item.price * item.qty;
         totalPrice += subtotal;
 
-        orderText += `${String(index + 1).padStart(2, '0')}. ${item.name}\n`;
-        orderText += `    ${item.selections.join(' • ')}\n`;
+        orderText += `\n${index + 1}. ${item.name}\n`;
+        orderText += `   ${item.selections.join(' • ')}\n`;
 
         if (item.id === 'canva' && item.email) {
-            orderText += `    Email : ${item.email}\n`;
+            orderText += `   Email: ${item.email}\n`;
         }
 
-        orderText += `    Qty   : ${item.qty}\n`;
-        orderText += `    Harga : ${formatRupiah(subtotal)}\n\n`;
+        orderText += `   Qty: ${item.qty} | ${formatRupiah(subtotal)}\n`;
     });
 
-    orderText += `────────────────────────────\nTOTAL\n${formatRupiah(totalPrice)}\n────────────────────────────\n\nCUSTOMER\n────────────────────────────\n\nUsername\n$@{username}\n\nDevice Login\n${device}\n\nPayment\n${payment}\n\n────────────────────────────\n       THANK YOU ♡\n      NASNOWCI STORE\n────────────────────────────`;
+    orderText +=
+        `\n━━━━━━━━━━━━━━━━━━━━\n` +
+        `TOTAL: ${formatRupiah(totalPrice)}\n` +
+        `━━━━━━━━━━━━━━━━━━━━\n` +
+        `CUSTOMER\n` +
+        `Username: ${username}\n` +
+        `Device: ${device}\n` +
+        `Payment: ${payment}\n` +
+        `━━━━━━━━━━━━━━━━━━━━\n` +
+        `      THANK YOU ♡\n` +
+        `     NASNOWCI STORE`;
 
     const textarea = document.createElement('textarea');
     textarea.value = orderText;
