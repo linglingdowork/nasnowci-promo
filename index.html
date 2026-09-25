@@ -3,599 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
     <title>Nasnowci - apps premium store</title>
 
-    <!-- Telegram Web App -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
-    <!-- Google Font - Poppins -->
+    <!-- Google Font: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" 
-        rel="stylesheet"
-    >
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <div class="app-container">
+<div class="app-container">
 
-        <!-- ========================================== -->
-        <!-- HEADER -->
-        <!-- ========================================== -->
+    <header>
+        <a href="#" class="brand-logo" onclick="navigate('home'); return false;">nasnowci</a>
 
-        <header>
+        <button class="cart-btn" onclick="navigate('cart')">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span class="cart-badge" id="cart-badge">0</span>
+        </button>
+    </header>
 
-            <a
-                href="#"
-                class="brand-logo"
-                onclick="navigate('home'); return false;"
-            >
-                nasnowci
-            </a>
+    <div id="view-home" class="view-section active">
+        <h1 class="title-large" style="margin-top: 20px;">CATALOGUE</h1>
+        <p class="subtitle">store app premiums terbaik! ✦</p>
 
-            <button
-                class="cart-btn"
-                onclick="navigate('cart')"
-            >
-
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-
-                    <line
-                        x1="3"
-                        y1="6"
-                        x2="21"
-                        y2="6"
-                    ></line>
-
-                    <path d="M16 10a4 4 0 0 1-8 0"></path>
-                </svg>
-
-                <span
-                    class="cart-badge"
-                    id="cart-badge"
-                >
-                    0
-                </span>
-
-            </button>
-
-        </header>
-
-
-        <!-- ========================================== -->
-        <!-- HOME -->
-        <!-- ========================================== -->
-
-        <div
-            id="view-home"
-            class="view-section active"
-        >
-
-            <h1
-                class="title-large"
-                style="margin-top: 20px;"
-            >
-                CATALOGUE
-            </h1>
-
-            <p class="subtitle">
-                store app premiums terbaik! ✦
-            </p>
-
-
-            <div
-                class="vintage-card"
-                onclick="openCategory('STREAMING APPS')"
-            >
-
-                <h3>
-                    STREAMING APPS
-                </h3>
-
-                <p>
-                    explore collection ✦
-                </p>
-
-            </div>
-
-
-            <div
-                class="vintage-card"
-                onclick="openCategory('EDITING APPS')"
-            >
-
-                <h3>
-                    EDITING APPS
-                </h3>
-
-                <p>
-                    explore collection ✦
-                </p>
-
-            </div>
-
+        <div class="vintage-card" onclick="openCategory('STREAMING APPS')">
+            <h3>STREAMING APPS</h3>
+            <p>explore collection ✦</p>
         </div>
 
-
-
-        <!-- ========================================== -->
-        <!-- CATEGORY -->
-        <!-- ========================================== -->
-
-        <div
-            id="view-category"
-            class="view-section"
-        >
-
-            <button
-                class="back-btn"
-                onclick="navigate('home')"
-            >
-
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
-
-                BACK
-
-            </button>
-
-
-            <h2
-                class="section-title"
-                id="category-title"
-            >
-                CATEGORY
-            </h2>
-
-
-            <div
-                class="app-grid"
-                id="app-list-container"
-            >
-                <!-- Diisi otomatis oleh JavaScript -->
-            </div>
-
+        <div class="vintage-card" onclick="openCategory('EDITING APPS')">
+            <h3>EDITING APPS</h3>
+            <p>explore collection ✦</p>
         </div>
-
-
-
-        <!-- ========================================== -->
-        <!-- PRODUCT -->
-        <!-- ========================================== -->
-
-        <div
-            id="view-product"
-            class="view-section"
-        >
-
-            <button
-                class="back-btn"
-                onclick="goBackProductStep()"
-            >
-
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
-
-                BACK
-
-            </button>
-
-
-            <div class="product-header">
-
-                <img
-                    id="product-image"
-                    src=""
-                    alt="App Logo"
-                >
-
-                <h2
-                    class="section-title"
-                    id="product-title"
-                    style="margin-bottom: 0;"
-                >
-                    APP NAME
-                </h2>
-
-            </div>
-
-
-            <!-- Pilihan produk -->
-
-            <div id="step-container">
-
-                <h3
-                    class="step-label"
-                    id="step-label"
-                >
-                    Choose your plan
-                </h3>
-
-
-                <div
-                    class="options-grid"
-                    id="options-container"
-                >
-                    <!-- Diisi otomatis oleh JS -->
-                </div>
-
-            </div>
-
-
-
-            <!-- ====================================== -->
-            <!-- PRODUCT SUMMARY -->
-            <!-- ====================================== -->
-
-            <div
-                id="summary-container"
-                style="display: none;"
-            >
-
-                <div class="summary-card">
-
-                    <h3
-                        class="summary-title"
-                        id="summary-app-name"
-                    >
-                        App Name
-                    </h3>
-
-
-                    <div
-                        class="summary-details"
-                        id="summary-details"
-                    >
-                        Plan<br>
-                        Duration
-                    </div>
-
-
-                    <div
-                        class="summary-price"
-                        id="summary-price"
-                    >
-                        Rp 0
-                    </div>
-
-
-                    <button
-                        class="btn-primary"
-                        onclick="addToCart()"
-                    >
-                        ADD TO CART
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ========================================== -->
-        <!-- CART / RECEIPT -->
-        <!-- ========================================== -->
-
-        <div
-            id="view-cart"
-            class="view-section"
-        >
-
-            <button
-                class="back-btn"
-                onclick="navigate('home')"
-            >
-
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
-
-                BACK TO MENU
-
-            </button>
-
-
-
-            <!-- ====================================== -->
-            <!-- RECEIPT -->
-            <!-- ====================================== -->
-
-            <div class="receipt">
-
-                <!-- Receipt Header -->
-
-                <div class="receipt-header">
-
-                    <div class="receipt-decoration">
-                        ✦ ❄ ✦
-                    </div>
-
-
-                    <div class="receipt-store">
-                        NASNOWCI
-                    </div>
-
-
-                    <div class="receipt-title">
-                        ORDER
-                    </div>
-
-
-                    <div class="receipt-small">
-                        DIGITAL STORE
-                    </div>
-
-
-                    <div class="receipt-line">
-                        ──────────────────────
-                    </div>
-
-
-                    <div class="receipt-date-row">
-
-                        <span>
-                            DATE
-                        </span>
-
-                        <span id="receipt-date">
-                            -
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- ================================== -->
-                <!-- ITEMS -->
-                <!-- ================================== -->
-
-                <div class="receipt-section">
-
-                    <div class="receipt-section-title">
-                        ✦ ITEM
-                    </div>
-
-
-                    <div id="cart-items-container">
-
-                        <!--
-                            Item akan diisi otomatis
-                            oleh JavaScript
-                        -->
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- ================================== -->
-                <!-- TOTAL -->
-                <!-- ================================== -->
-
-                <div class="receipt-total-section">
-
-                    <div class="receipt-line">
-                        ──────────────────────
-                    </div>
-
-
-                    <div class="receipt-total-label">
-                        TOTAL
-                    </div>
-
-
-                    <div
-                        class="receipt-total-price"
-                        id="cart-total-price"
-                    >
-                        Rp 0
-                    </div>
-
-
-                    <div class="receipt-line">
-                        ──────────────────────
-                    </div>
-
-                </div>
-
-
-
-                <!-- ================================== -->
-                <!-- CUSTOMER -->
-                <!-- ================================== -->
-
-                <div class="receipt-customer">
-
-                    <div class="receipt-section-title">
-                        ✦ CUSTOMER
-                    </div>
-
-
-                    <!-- Username -->
-
-                    <div class="receipt-field">
-
-                        <label for="order-username">
-                            Username
-                        </label>
-
-                        <input
-                            type="text"
-                            id="order-username"
-                            placeholder="@username"
-                        >
-
-                    </div>
-
-
-
-                    <!-- Device -->
-
-                    <div class="receipt-field">
-
-                        <label for="order-device">
-                            Device Login
-                        </label>
-
-                        <input
-                            type="text"
-                            id="order-device"
-                            placeholder="contoh: Android"
-                        >
-
-                    </div>
-
-
-
-                    <!-- Payment -->
-
-                    <div class="receipt-field">
-
-                        <label for="order-payment">
-                            Payment
-                        </label>
-
-                        <select id="order-payment">
-
-                            <option value="QRIS">
-                                QRIS
-                            </option>
-
-                        </select>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- ================================== -->
-                <!-- BUTTON -->
-                <!-- ================================== -->
-
-                <div class="receipt-actions">
-
-                    <button
-                        class="copy-order-btn"
-                        onclick="processOrder()"
-                    >
-                        PESAN SEKARANG
-                    </button>
-
-
-                    <button
-                        class="back-menu-btn"
-                        onclick="navigate('home')"
-                    >
-                        BACK TO MENU
-                    </button>
-
-                </div>
-
-
-
-                <!-- ================================== -->
-                <!-- FOOTER -->
-                <!-- ================================== -->
-
-                <div class="receipt-footer">
-
-                    <div class="receipt-line">
-                        ──────────────────────
-                    </div>
-
-
-                    <div class="snow-footer">
-                        ❄ ✦ ❄
-                    </div>
-
-
-                    <div class="thank-you">
-                        THANK YOU ♡
-                    </div>
-
-
-                    <div class="receipt-store-footer">
-                        NASNOWCI STORE
-                    </div>
-
-
-                    <div class="receipt-small">
-                        have a lovely day!
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ========================================== -->
-        <!-- TOAST -->
-        <!-- ========================================== -->
-
-        <div
-            id="toast"
-            class="toast"
-        >
-            ORDER COPIED!
-        </div>
-
     </div>
 
+    <div id="view-category" class="view-section">
+        <button class="back-btn" onclick="navigate('home')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            BACK
+        </button>
+        <h2 class="section-title" id="category-title">CATEGORY</h2>
+        <div class="app-grid" id="app-list-container"></div>
+    </div>
 
+    <div id="view-product" class="view-section">
+        <button class="back-btn" onclick="goBackProductStep()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            BACK
+        </button>
 
-    <!-- ========================================== -->
-    <!-- JAVASCRIPT -->
-    <!-- ========================================== -->
+        <div class="product-header">
+            <img id="product-image" src="" alt="App Logo">
+            <h2 class="section-title" id="product-title" style="margin-bottom: 0;">APP NAME</h2>
+        </div>
 
-    <script src="script.js"></script>
+        <div id="step-container">
+            <h3 class="step-label" id="step-label">Choose your plan</h3>
+            <div class="options-grid" id="options-container"></div>
+        </div>
 
+        <div id="summary-container" style="display: none;">
+            <div class="summary-card">
+                <h3 class="summary-title" id="summary-app-name">App Name</h3>
+                <div class="summary-details" id="summary-details">Plan<br>Duration</div>
+                <div class="summary-price" id="summary-price">Rp 0</div>
+                <button class="btn-primary" onclick="addToCart()">ADD TO CART</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="view-cart" class="view-section">
+        <button class="back-btn" onclick="navigate('home')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            BACK TO MENU
+        </button>
+
+        <h2 class="section-title">YOUR CART</h2>
+
+        <div id="cart-items-container"></div>
+
+        <!-- DATA CUSTOMER YANG AKAN IKUT TERCOPY KE STRUK -->
+        <div class="order-customer" id="order-customer-box">
+            <div class="order-customer-title">CUSTOMER INFO</div>
+
+            <div class="order-field">
+                <label for="order-username">Username</label>
+                <input type="text" id="order-username" placeholder="@username">
+            </div>
+
+            <div class="order-field">
+                <label for="order-device">Device Login</label>
+                <input type="text" id="order-device" placeholder="contoh: 2 device">
+            </div>
+
+            <div class="order-field">
+                <label for="order-payment">Payment</label>
+                <select id="order-payment">
+                    <option value="QRIS">QRIS</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="cart-footer">
+            <div class="cart-total-section">
+                <div class="cart-total-row">
+                    <span>TOTAL</span>
+                    <span id="cart-total-price">Rp 0</span>
+                </div>
+                <button class="btn-primary" onclick="processOrder()">PESAN SEKARANG</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">ORDER COPIED!</div>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
-```
