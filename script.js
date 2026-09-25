@@ -40,7 +40,9 @@ const database = [
                 '7 DAYS': 12000,
                 '14 DAYS': 20000,
                 '21 DAYS': 30000,
-                '1 MONTH': 39000
+                '1 MONTH': 39000,
+                '2 MONTHS': 68000,
+                '3 MONTHS': 95000
             },
             'PRIVATE': {
                 '1 MONTH': 165000
