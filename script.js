@@ -1105,7 +1105,7 @@ function renderCart() {
             </div>
 
             <label style="display:block; font-size:13px; margin-bottom:5px;">Device Login</label>
-            <input type="text" id="order-device" placeholder="contoh: 2 device" style="width:100%; box-sizing:border-box; padding:11px 12px; border:1px solid #73151B; border-radius:8px; margin-bottom:10px; font:inherit; background:#fff;">
+            <input type="text" id="order-device" placeholder="contoh: Android / TV / IOS" style="width:100%; box-sizing:border-box; padding:11px 12px; border:1px solid #73151B; border-radius:8px; margin-bottom:10px; font:inherit; background:#fff;">
 
             <label style="display:block; font-size:13px; margin-bottom:5px;">Payment</label>
             <input type="text" value="QRIS" readonly style="width:100%; box-sizing:border-box; padding:11px 12px; border:1px solid #73151B; border-radius:8px; font:inherit; background:#fff; color:#333;">
