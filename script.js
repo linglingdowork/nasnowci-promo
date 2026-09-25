@@ -382,9 +382,8 @@ let currentCategoryName = '';
 let currentProduct = null;
 let currentSelections = [];
 
-// Email khusus Canva & YouTube FAMPLAN
+// Khusus Canva
 let currentCanvaEmail = '';
-let currentYoutubeEmail = '';
 
 
 // ============================================================
@@ -470,9 +469,8 @@ function openProduct(productId) {
 
     currentSelections = [];
 
-    // Reset email Canva & YouTube FAMPLAN
+    // Reset email Canva
     currentCanvaEmail = '';
-    currentYoutubeEmail = '';
 
     document.getElementById('product-title').innerText =
         currentProduct.name;
@@ -504,30 +502,26 @@ function openProduct(productId) {
 
 function goBackProductStep() {
 
-    // Kalau sedang di form email Canva / YouTube FAMPLAN
-    const needsEmail =
+    // Kalau sedang di form email Canva
+    if (
         currentProduct &&
-        (currentProduct.id === 'canva' ||
-         (currentProduct.id === 'youtube' && currentSelections[0] === 'FAMPLAN')) &&
-        currentSelections.length === 2;
+        currentProduct.id === 'canva' &&
+        currentSelections.length === 2 &&
+        currentCanvaEmail === ''
+    ) {
+        currentSelections.pop();
+        renderProductSteps();
+        return;
+    }
 
-    if (needsEmail) {
-        const emailValue = currentProduct.id === 'canva'
-            ? currentCanvaEmail
-            : currentYoutubeEmail;
-
-        if (emailValue === '') {
-            currentSelections.pop();
-            renderProductSteps();
-            return;
-        }
-
-        if (currentProduct.id === 'canva') {
-            currentCanvaEmail = '';
-        } else {
-            currentYoutubeEmail = '';
-        }
-
+    // Kalau sudah ada email Canva
+    if (
+        currentProduct &&
+        currentProduct.id === 'canva' &&
+        currentSelections.length === 2 &&
+        currentCanvaEmail !== ''
+    ) {
+        currentCanvaEmail = '';
         renderProductSteps();
         return;
     }
@@ -585,26 +579,20 @@ function renderProductSteps() {
 
 
     // ========================================================
-    // KHUSUS CANVA & YOUTUBE FAMPLAN - EMAIL
+    // KHUSUS CANVA - EMAIL
     // ========================================================
 
-    const isYoutubeFamplan =
-        currentProduct.id === 'youtube' &&
-        currentSelections[0] === 'FAMPLAN';
-
     if (
-        (currentProduct.id === 'canva' || isYoutubeFamplan) &&
+        currentProduct.id === 'canva' &&
         currentSelections.length === 2 &&
-        (currentProduct.id === 'canva' ? currentCanvaEmail : currentYoutubeEmail) === ''
+        currentCanvaEmail === ''
     ) {
 
         stepContainer.style.display = 'block';
 
         summaryContainer.style.display = 'none';
 
-        stepLabel.innerText = currentProduct.id === 'canva'
-            ? 'Enter Canva email'
-            : 'Enter YouTube email';
+        stepLabel.innerText = 'Enter email';
 
         optionsContainer.innerHTML = `
 
@@ -619,7 +607,7 @@ function renderProductSteps() {
                 <input
                     type="email"
                     id="canva-email"
-                    placeholder="Masukkan email"
+                    placeholder="Masukkan email Canva"
                     style="
                         width: 100%;
                         box-sizing: border-box;
@@ -668,15 +656,10 @@ function renderProductSteps() {
 
 
         // =========================
-        // SUMMARY CANVA / YOUTUBE FAMPLAN
+        // SUMMARY CANVA
         // =========================
 
-        if (currentProduct.id === 'canva' ||
-            (currentProduct.id === 'youtube' && currentSelections[0] === 'FAMPLAN')) {
-
-            const email = currentProduct.id === 'canva'
-                ? currentCanvaEmail
-                : currentYoutubeEmail;
+        if (currentProduct.id === 'canva') {
 
             document.getElementById(
                 'summary-details'
@@ -688,7 +671,7 @@ function renderProductSteps() {
                 ${currentSelections[1]}
                 <br>
 
-                Email: ${email}
+                Email: ${currentCanvaEmail}
 
             `;
 
@@ -797,7 +780,7 @@ function renderProductSteps() {
 // SUBMIT EMAIL CANVA
 // ============================================================
 
-function submitProductEmail() {
+function submitCanvaEmail() {
 
     const emailInput =
         document.getElementById('canva-email');
@@ -805,24 +788,30 @@ function submitProductEmail() {
     const email =
         emailInput.value.trim();
 
+
     if (!email) {
+
         showToast('Email wajib diisi!');
+
         return;
     }
+
 
     if (!emailInput.checkValidity()) {
+
         showToast('Format email tidak valid!');
+
         return;
     }
 
-    if (currentProduct.id === 'canva') {
-        currentCanvaEmail = email;
-    } else if (currentProduct.id === 'youtube' && currentSelections[0] === 'FAMPLAN') {
-        currentYoutubeEmail = email;
-    }
+
+    currentCanvaEmail =
+        email;
+
 
     renderProductSteps();
 }
+
 
 // ============================================================
 // ADD TO CART
@@ -861,13 +850,11 @@ function addToCart() {
 
         qty: 1,
 
-        // Email disimpan untuk Canva & YouTube FAMPLAN
+        // Email hanya disimpan untuk Canva
         email:
             currentProduct.id === 'canva'
                 ? currentCanvaEmail
-                : (currentProduct.id === 'youtube' && currentSelections[0] === 'FAMPLAN'
-                    ? currentYoutubeEmail
-                    : null)
+                : null
     };
 
 
@@ -992,9 +979,9 @@ function renderCart() {
             item.selections.join(' · ');
 
 
-        // Tambahkan email Canva / YouTube FAMPLAN di cart
+        // Tambahkan email Canva di cart
         if (
-            (item.id === 'canva' || (item.id === 'youtube' && item.selections[0] === 'FAMPLAN')) &&
+            item.id === 'canva' &&
             item.email
         ) {
 
@@ -1200,10 +1187,7 @@ function processOrder() {
         orderText += `\n${index + 1}. ${item.name}\n`;
         orderText += `   ${item.selections.join(' • ')}\n`;
 
-        if (
-            (item.id === 'canva' || (item.id === 'youtube' && item.selections[0] === 'FAMPLAN')) &&
-            item.email
-        ) {
+        if (item.id === 'canva' && item.email) {
             orderText += `   Email: ${item.email}\n`;
         }
 
