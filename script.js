@@ -1071,55 +1071,139 @@ function renderCart() {
     // Form data buyer untuk order
     let orderForm = document.getElementById('order-form');
 
-    if (!orderForm) {
-        orderForm = document.createElement('div');
-        orderForm.id = 'order-form';
-        orderForm.style.cssText = `
-            margin: 16px 0;
-            padding: 14px;
-            border: 1px solid rgba(115, 21, 27, 0.25);
-            border-radius: 12px;
-            background: #fffaf2;
-        `;
+// ============================================================
+// CUSTOMER FORM
+// ============================================================
 
-        orderForm.innerHTML = `
-            <div style="font-weight:700; margin-bottom:10px;">CUSTOMER</div>
+function renderCustomerForm(footer) {
 
-            <label style="display:block; font-size:13px; margin-bottom:5px;">Username Telegram</label>
-            <div style="display:flex; align-items:center; border:1px solid #73151B; border-radius:8px; overflow:hidden; background:#fff; margin-bottom:10px;">
-                <span style="padding:11px 0 11px 12px; color:#73151B; font-weight:600;">@</span>
-                <input
-                    type="text"
-                    id="order-username"
-                    placeholder="username"
-                    autocomplete="off"
-                    style="flex:1; min-width:0; border:0; outline:0; padding:11px 12px 11px 4px; font:inherit; background:transparent;"
-                >
-            </div>
+    let orderForm = document.getElementById('order-form');
 
-            <label style="display:block; font-size:13px; margin-bottom:5px;">Device Login</label>
+    if (orderForm) {
+        return;
+    }
+
+    orderForm = document.createElement('div');
+
+    orderForm.id = 'order-form';
+
+    orderForm.style.cssText = `
+        margin: 14px 0 0;
+        padding: 18px;
+        border: 1px solid rgba(115, 21, 27, 0.22);
+        border-radius: 12px;
+        background: #fffaf2;
+    `;
+
+    orderForm.innerHTML = `
+
+        <div style="
+            font-size: 18px;
+            font-weight: 700;
+            color: #73151B;
+            margin-bottom: 16px;
+        ">
+            CUSTOMER
+        </div>
+
+        <label style="
+            display:block;
+            font-size:14px;
+            margin-bottom:6px;
+        ">
+            Username Telegram
+        </label>
+
+        <div style="
+            display:flex;
+            align-items:center;
+            border:1px solid #73151B;
+            border-radius:9px;
+            overflow:hidden;
+            background:#fff;
+            margin-bottom:13px;
+        ">
+
+            <span style="
+                padding:11px 0 11px 12px;
+                color:#73151B;
+                font-weight:600;
+                font-size:16px;
+            ">@</span>
+
             <input
                 type="text"
-                id="order-device"
-                placeholder="contoh: Android / iPhone / Laptop"
-                style="width:100%; box-sizing:border-box; padding:11px 12px; border:1px solid #73151B; border-radius:8px; margin-bottom:10px; font:inherit;"
+                id="order-username"
+                placeholder="username"
+                autocomplete="off"
+                style="
+                    flex:1;
+                    min-width:0;
+                    border:0;
+                    outline:0;
+                    padding:11px 12px 11px 4px;
+                    font:inherit;
+                    background:transparent;
+                "
             >
 
-            <label style="display:block; font-size:13px; margin-bottom:5px;">Payment</label>
-            <select
-                id="order-payment"
-                style="width:100%; box-sizing:border-box; padding:11px 12px; border:1px solid #73151B; border-radius:8px; font:inherit; background:#fff;"
-            >
-                <option value="QRIS">QRIS</option>
-                <option value="DANA">DANA</option>
-                <option value="GOPAY">GoPay</option>
-                <option value="OVO">OVO</option>
-                <option value="TRANSFER">Transfer</option>
-            </select>
-        `;
+        </div>
 
-        footer.insertBefore(orderForm, footer.firstChild);
-    }
+
+        <label style="
+            display:block;
+            font-size:14px;
+            margin-bottom:6px;
+        ">
+            Device Login
+        </label>
+
+        <input
+            type="text"
+            id="order-device"
+            placeholder="contoh: 2 device"
+            style="
+                width:100%;
+                box-sizing:border-box;
+                padding:11px 12px;
+                border:1px solid #73151B;
+                border-radius:9px;
+                margin-bottom:13px;
+                font:inherit;
+                background:#fff;
+            "
+        >
+
+
+        <label style="
+            display:block;
+            font-size:14px;
+            margin-bottom:6px;
+        ">
+            Payment
+        </label>
+
+        <select
+            id="order-payment"
+            disabled
+            style="
+                width:100%;
+                box-sizing:border-box;
+                padding:11px 12px;
+                border:1px solid #73151B;
+                border-radius:9px;
+                font:inherit;
+                background:#fff;
+                color:#333;
+                opacity:1;
+            "
+        >
+            <option value="QRIS">QRIS</option>
+        </select>
+
+    `;
+
+    footer.insertBefore(orderForm, footer.firstChild);
 }
 
 
