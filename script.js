@@ -800,7 +800,7 @@ function renderProductSteps() {
 function submitProductEmail() {
 
     const emailInput =
-        document.getElementById('canva-email');
+        document.getElementById('product-email');
 
     const email =
         emailInput.value.trim();
@@ -1219,7 +1219,6 @@ function processOrder() {
         `Device: ${device}\n` +
         `Payment: ${payment}\n` +
         `━━━━━━━━━━━━━━━━━━━━\n` +
-        `      THANK YOU ♡\n` +
         `     NASNOWCI STORE`;
 
     const textarea = document.createElement('textarea');
