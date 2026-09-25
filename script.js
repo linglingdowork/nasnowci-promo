@@ -362,6 +362,23 @@ const database = [
         }
     },
 
+        {
+        category: 'EDITING APPS',
+        id: 'picsart',
+        name: 'Picsart',
+        image: 'image/picsart.png',
+        stepLabels: ['Choose your plan', 'Choose duration'],
+        data: {
+            'SHARING': {
+                '1 MONTH': 10000,
+                '3 MONTHS': 15000
+            },
+            'PRIVATE': {
+                '1 MONTH': 17000
+            }
+        }
+    },
+
     {
         category: 'EDITING APPS',
         id: 'alight-motion',
