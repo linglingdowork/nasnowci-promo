@@ -233,6 +233,23 @@ const database = [
         }
     },
 
+        {
+        category: 'STREAMING APPS',
+        id: 'apple-music',
+        name: 'Apple Music',
+        image: 'image/youtube.png',
+        stepLabels: ['Choose your plan', 'Choose duration'],
+        data: {
+            'INDPLAN': {
+                '1 MONTH': 20000
+            },
+            'FAMPLAN/IMESS': {
+                '1 MONTH': 20000,
+                '2 MONTHS': 25000
+            }
+        }
+    },
+
     {
         category: 'STREAMING APPS',
         id: 'youtube',
