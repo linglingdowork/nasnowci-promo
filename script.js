@@ -1,4 +1,15 @@
-// Inisialisasi Telegram WebApp
+```javascript
+// =========================================================
+// NASNOWCI
+// SCRIPT.JS
+// Poppins + Snow Christmas + Receipt Order
+// =========================================================
+
+
+// =========================================================
+// TELEGRAM WEB APP
+// =========================================================
+
 let tg = null;
 
 if (window.Telegram && window.Telegram.WebApp) {
@@ -7,284 +18,385 @@ if (window.Telegram && window.Telegram.WebApp) {
     tg.expand();
 }
 
-// Fallback gambar jika gambar belum ada di folder
+
+// =========================================================
+// IMAGE HELPER
+// =========================================================
+
 function getImageUrl(filename, appName) {
     return filename;
 }
 
 function handleImageError(imgElement, appName) {
     imgElement.onerror = null;
-    imgElement.src = `https://placehold.co/100x100/FFF9EF/73151B?text=${appName.substring(0,3).toUpperCase()}`;
+
+    imgElement.src =
+        `https://placehold.co/100x100/FFF9EF/73151B?text=${appName
+            .substring(0, 3)
+            .toUpperCase()}`;
 }
 
-// ============================================================
+
+// =========================================================
 // DATABASE
-// ============================================================
+// =========================================================
 
 const database = [
 
-    // ================== STREAMING APPS ==================
+    // =====================================================
+    // STREAMING APPS
+    // =====================================================
 
     {
         category: 'STREAMING APPS',
         id: 'netflix',
         name: 'Netflix',
         image: 'image/netflix.webp',
-        stepLabels: ['Choose your plan', 'Choose duration'],
+
+        stepLabels: [
+            'Choose your plan',
+            'Choose duration'
+        ],
+
         data: {
             'SHARING': {
-                '1 DAY': 3500,
-                '2 DAYS': 5000,
-                '3 DAYS': 7000,
-                '5 DAYS': 9000,
-                '7 DAYS': 12000,
-                '14 DAYS': 20000,
-                '21 DAYS': 30000,
-                '1 MONTH': 39000,
-                '2 MONTHS': 68000,
-                '3 MONTHS': 95000
+                '1 DAY': 4000,
+                '2 DAYS': 6000,
+                '3 DAYS': 9000,
+                '5 DAYS': 12000,
+                '7 DAYS': 15000,
+                '14 DAYS': 24000,
+                '21 DAYS': 34000,
+                '1 MONTH': 45000
             },
+
             'PRIVATE': {
-                '1 MONTH': 165000
+                '1 MONTH': 175000
             }
         }
     },
+
 
     {
         category: 'STREAMING APPS',
         id: 'disney',
         name: 'Disney',
         image: 'image/disney.webp',
-        stepLabels: ['Choose your plan', 'Choose duration'],
+
+        stepLabels: [
+            'Choose your plan',
+            'Choose duration'
+        ],
+
         data: {
             'SHARING': {
-                '1 DAY': 3000,
-                '2 DAYS': 6000,
-                '3 DAYS': 8000,
-                '5 DAYS': 10000,
-                '7 DAYS': 13000,
-                '14 DAYS': 20000,
-                '21 DAYS': 28000,
-                '1 MONTH': 30000
+                '1 DAY': 4000,
+                '2 DAYS': 7000,
+                '3 DAYS': 10000,
+                '5 DAYS': 13000,
+                '7 DAYS': 15000,
+                '14 DAYS': 22000,
+                '21 DAYS': 30000,
+                '1 MONTH': 35000
             },
+
             'PRIVATE': {
                 '1 MONTH': 130000
             }
         }
     },
 
+
     {
         category: 'STREAMING APPS',
         id: 'viu',
         name: 'Viu',
         image: 'image/viu.png',
-        stepLabels: ['Choose your plan', 'Choose duration'],
+
+        stepLabels: [
+            'Choose your plan',
+            'Choose duration'
+        ],
+
         data: {
             'PRIVATE ANTI LIMIT': {
-                '1 DAY': 1000,
-                '2 DAYS': 2000,
-                '3 DAYS': 3000,
-                '5 DAYS': 4000,
-                '7 DAYS': 5000,
-                '1 MONTH': 6000,
-                '2 MONTHS': 9000,
-                '3 MONTHS': 12000,
-                '4 MONTHS': 15000,
-                '5 MONTHS': 18000,
-                '6 MONTHS': 20000,
-                '1 YEAR': 30000
+                '1 DAY': 2000,
+                '2 DAYS': 3000,
+                '3 DAYS': 4000,
+                '5 DAYS': 5000,
+                '7 DAYS': 6000,
+                '1 MONTH': 10000,
+                '2 MONTHS': 15000,
+                '3 MONTHS': 17000,
+                '4 MONTHS': 20000,
+                '5 MONTHS': 23000,
+                '6 MONTHS': 25000,
+                '1 YEAR': 35000
             }
         }
     },
+
 
     {
         category: 'STREAMING APPS',
         id: 'iqiyi',
         name: 'iQIYI',
         image: 'image/iqiyi.png',
-        stepLabels: ['Choose your plan', 'Choose duration'],
+
+        stepLabels: [
+            'Choose your plan',
+            'Choose duration'
+        ],
+
         data: {
             'SHARING STANDARD': {
-                '1 MONTH': 8000,
-                '3 MONTHS': 15000
-            },
-            'SHARING PREMIUM': {
                 '1 MONTH': 10000,
-                '3 MONTHS': 18000
+                '3 MONTHS': 17000
             },
+
+            'SHARING PREMIUM': {
+                '1 MONTH': 12000,
+                '3 MONTHS': 20000
+            },
+
             'PRIVATE STANDARD': {
                 '1 MONTH': 32000
             },
+
             'PRIVATE PREMIUM': {
                 '1 MONTH': 37000
             }
         }
     },
 
+
     {
         category: 'STREAMING APPS',
         id: 'wetv',
         name: 'WeTV',
         image: 'image/wetv.jpeg',
-        stepLabels: ['Choose your plan', 'Choose duration'],
+
+        stepLabels: [
+            'Choose your plan',
+            'Choose duration'
+        ],
+
         data: {
             'SHARING': {
                 '1 MONTH': 13000
             },
+
             'ANTILIMIT': {
                 '1 MONTH': 20000
             },
+
             'PRIVATE': {
                 '1 MONTH': 35000
             }
         }
     },
 
+
     {
         category: 'STREAMING APPS',
         id: 'hbo',
         name: 'HBO',
         image: 'image/hbo.png',
-        stepLabels: ['Choose your plan', 'Choose duration'],
+
+        stepLabels: [
+            'Choose your plan',
+            'Choose duration'
+        ],
+
         data: {
             'SHARING': {
                 '1 DAY': 3500,
-                '3 DAYS': 7000,
-                '7 DAYS': 13000,
-                '1 MONTH': 20000
+                '3 DAYS': 9000,
+                '7 DAYS': 15000,
+                '1 MONTH': 24000
             },
-            'PRIVATE BASIC': {
-                '1 MONTH': 45000
-            },
-            'PRIVATE ULTIMATE': {
+
+            'PRIVATE': {
                 '1 MONTH': 90000
             }
         }
     },
+
 
     {
         category: 'STREAMING APPS',
         id: 'bstation',
         name: 'Bstation',
         image: 'image/bstation.jpeg',
-        stepLabels: ['Choose your plan', 'Choose duration'],
+
+        stepLabels: [
+            'Choose your plan',
+            'Choose duration'
+        ],
+
         data: {
             'SHARING': {
-                '1 MONTH': 10000
+                '1 MONTH': 13000
             },
+
             'PRIVATE': {
-                '1 MONTH': 40000
+                '1 MONTH': 42000
             }
         }
     },
+
 
     {
         category: 'STREAMING APPS',
         id: 'loklok',
         name: 'Loklok',
         image: 'image/loklok.jpeg',
-        stepLabels: ['Choose your plan', 'Choose duration'],
+
+        stepLabels: [
+            'Choose your plan',
+            'Choose duration'
+        ],
+
         data: {
             'SHARING BASIC': {
-                '1 MONTH': 20000
+                '1 MONTH': 22000
             },
+
             'SHARING STANDART': {
-                '1 MONTH': 25000
+                '1 MONTH': 27000
             }
         }
     },
+
 
     {
         category: 'STREAMING APPS',
         id: 'youku',
         name: 'Youku',
         image: 'image/youku.png',
-        stepLabels: ['Choose your plan', 'Choose duration'],
+
+        stepLabels: [
+            'Choose your plan',
+            'Choose duration'
+        ],
+
         data: {
             'SHARING': {
-                '1 MONTH': 9000,
-                '3 MONTHS': 15000
+                '1 MONTH': 10000,
+                '3 MONTHS': 17000
             }
         }
     },
+
 
     {
         category: 'STREAMING APPS',
         id: 'pidioookk',
         name: 'Pidioookk',
         image: 'image/vidio.png',
-        stepLabels: ['Choose device', 'Choose plan', 'Choose duration'],
+
+        stepLabels: [
+            'Choose device',
+            'Choose plan',
+            'Choose duration'
+        ],
+
         data: {
             'TV': {
                 'PRIVATE': {
                     '1 MONTH': 17000
                 }
             },
+
             'MOBILE': {
                 'PRIVATE': {
-                    '1 MONTH': 28000
+                    '1 MONTH': 30000
                 }
             },
+
             'ALL DEVICE': {
                 'PRIVATE': {
-                    '1 MONTH': 43000
+                    '1 MONTH': 45000
                 }
             }
         }
     },
+
 
     {
         category: 'STREAMING APPS',
         id: 'youtube',
         name: 'YouTube',
         image: 'image/youtube.png',
-        stepLabels: ['Choose your plan', 'Choose duration'],
+
+        stepLabels: [
+            'Choose your plan',
+            'Choose duration'
+        ],
+
         data: {
             'FAMPLAN': {
-                '1 MONTH': 10000,
-                '2 MONTHS': 20000
+                '1 MONTH': 15000,
+                '2 MONTHS': 25000
             },
+
             'INDPLAN': {
                 '1 MONTH': 25000,
-                '2 MONTHS': 40000
+                '2 MONTHS': 35000
             }
         }
     },
+
 
     {
         category: 'STREAMING APPS',
         id: 'gagaoolala',
         name: 'GagaOOLala',
         image: 'image/gagaoolala.png',
-        stepLabels: ['Choose your plan', 'Choose duration'],
+
+        stepLabels: [
+            'Choose your plan',
+            'Choose duration'
+        ],
+
         data: {
             'SHARING': {
-                '1 MONTH': 13000
+                '1 MONTH': 18000
             }
         }
     },
+
 
     {
         category: 'STREAMING APPS',
         id: 'amazon-prime',
         name: 'Amazon Prime',
         image: 'image/prime.webp',
-        stepLabels: ['Choose your plan', 'Choose duration'],
+
+        stepLabels: [
+            'Choose your plan',
+            'Choose duration'
+        ],
+
         data: {
             'SHARING': {
-                '1 DAY': 2000,
-                '3 DAYS': 4000,
-                '7 DAYS': 6000,
-                '1 MONTH (4U)': 8000,
-                '1 MONTH (2U)': 10000
+                '1 DAY': 3000,
+                '3 DAYS': 6000,
+                '7 DAYS': 8000,
+                '1 MONTH (4U)': 10000,
+                '1 MONTH (2U)': 13000
             },
+
             'PRIVATE': {
-                '1 MONTH': 18000
+                '1 MONTH': 23000
             }
         }
     },
 
-    // ================== EDITING APPS ==================
+
+    // =====================================================
+    // EDITING APPS
+    // =====================================================
 
     {
         category: 'EDITING APPS',
@@ -292,35 +404,38 @@ const database = [
         name: 'Canva',
         image: 'image/canva.jpeg',
 
-        // EMAIL KHUSUS CANVA
-        stepLabels: ['Choose your plan', 'Choose duration'],
+        stepLabels: [
+            'Choose your plan',
+            'Choose duration'
+        ],
 
         data: {
             'MEMBER': {
-                '1 DAY': 1000,
-                '3 DAYS': 2000,
-                '7 DAYS': 3000,
-                '1 MONTH': 10000,
-                '2 MONTHS': 12000,
-                '3 MONTHS': 14000,
-                '4 MONTHS': 16000,
-                '5 MONTHS': 18000,
-                '6 MONTHS': 20000
+                '1 DAY': 2000,
+                '3 DAYS': 2500,
+                '7 DAYS': 4000,
+                '1 MONTH': 15000,
+                '2 MONTHS': 17000,
+                '3 MONTHS': 19000,
+                '4 MONTHS': 21000,
+                '5 MONTHS': 23000,
+                '6 MONTHS': 25000
             },
 
             'DESIGNER': {
-                '1 DAY': 1000,
-                '3 DAYS': 2000,
-                '7 DAYS': 3000,
-                '1 MONTH': 10000,
-                '2 MONTHS': 12000,
-                '3 MONTHS': 14000,
-                '4 MONTHS': 16000,
-                '5 MONTHS': 18000,
-                '6 MONTHS': 20000
+                '1 DAY': 3000,
+                '3 DAYS': 3500,
+                '7 DAYS': 5000,
+                '1 MONTH': 16000,
+                '2 MONTHS': 18000,
+                '3 MONTHS': 19000,
+                '4 MONTHS': 22000,
+                '5 MONTHS': 24000,
+                '6 MONTHS': 25000
             }
         }
     },
+
 
     {
         category: 'EDITING APPS',
@@ -328,86 +443,110 @@ const database = [
         name: 'CapCut',
         image: 'image/capcut.png',
 
-        // CAPCUT TIDAK ADA EMAIL
-        stepLabels: ['Choose your plan', 'Choose duration'],
+        stepLabels: [
+            'Choose your plan',
+            'Choose duration'
+        ],
 
         data: {
             'SHARING': {
                 '1 DAY': 3000,
                 '2 DAYS': 5000,
-                '3 DAYS': 6000,
-                '7 DAYS': 8000
+                '3 DAYS': 7000,
+                '7 DAYS': 9000
             },
+
             'PRIVATE': {
-                '7 DAYS': 20000,
+                '7 DAYS': 25000,
                 '1 MONTH': 35000
             }
         }
     },
+
 
     {
         category: 'EDITING APPS',
         id: 'alight-motion',
         name: 'Alight Motion',
         image: 'image/alight.jpeg',
-        stepLabels: ['Choose your plan', 'Choose duration'],
+
+        stepLabels: [
+            'Choose your plan',
+            'Choose duration'
+        ],
+
         data: {
             'SHARING': {
-                '1 DAY': 1000,
-                '7 DAYS': 3000,
-                '1 MONTH': 6000,
-                '2 MONTHS': 8000,
-                '3 MONTHS': 9000,
-                '4 MONTHS': 10000,
-                '5 MONTHS': 11000,
-                '6 MONTHS': 12000,
-                '1 YEAR': 15000
-            },
-            'PRIVATE': {
+                '1 DAY': 1500,
                 '7 DAYS': 5000,
-                '1 MONTH': 13000,
-                '1 YEAR': 20000
+                '1 MONTH': 8000,
+                '2 MONTHS': 10000,
+                '3 MONTHS': 12000,
+                '4 MONTHS': 13000,
+                '5 MONTHS': 14000,
+                '6 MONTHS': 15000,
+                '1 YEAR': 17000
+            },
+
+            'PRIVATE': {
+                '7 DAYS': 8000,
+                '1 MONTH': 18000,
+                '1 YEAR': 25000
             }
         }
     }
+
 ];
 
 
-// ============================================================
-// STATE
-// ============================================================
+// =========================================================
+// CART & PRODUCT STATE
+// =========================================================
 
 let cart = [];
+
 let currentCategoryName = '';
+
 let currentProduct = null;
+
 let currentSelections = [];
 
-// Khusus Canva
 let currentCanvaEmail = '';
 
 
-// ============================================================
-// FORMAT RUPIAH
-// ============================================================
+// =========================================================
+// RUPIAH
+// =========================================================
 
 function formatRupiah(angka) {
-    return 'Rp ' + angka
+    return 'Rp ' + Number(angka)
         .toString()
         .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
 
-// ============================================================
-// NAVIGASI
-// ============================================================
+// =========================================================
+// NAVIGATION
+// =========================================================
 
 function navigate(viewId) {
 
-    document.querySelectorAll('.view-section').forEach(el => {
-        el.classList.remove('active');
-    });
+    document
+        .querySelectorAll('.view-section')
+        .forEach(el => {
+            el.classList.remove('active');
+        });
 
-    document.getElementById('view-' + viewId).classList.add('active');
+    const target = document.getElementById('view-' + viewId);
+
+    if (target) {
+        target.classList.add('active');
+    }
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 
     if (viewId === 'cart') {
         renderCart();
@@ -415,9 +554,9 @@ function navigate(viewId) {
 }
 
 
-// ============================================================
-// BUKA KATEGORI
-// ============================================================
+// =========================================================
+// OPEN CATEGORY
+// =========================================================
 
 function openCategory(category) {
 
@@ -435,11 +574,14 @@ function openCategory(category) {
 
     apps.forEach(app => {
 
-        const card = document.createElement('div');
+        const card =
+            document.createElement('div');
 
         card.className = 'app-card';
 
-        card.onclick = () => openProduct(app.id);
+        card.onclick = () => {
+            openProduct(app.id);
+        };
 
         card.innerHTML = `
             <img
@@ -458,19 +600,22 @@ function openCategory(category) {
 }
 
 
-// ============================================================
-// BUKA PRODUK
-// ============================================================
+// =========================================================
+// OPEN PRODUCT
+// =========================================================
 
 function openProduct(productId) {
 
     currentProduct =
-        database.find(a => a.id === productId);
+        database.find(app => app.id === productId);
 
     currentSelections = [];
 
-    // Reset email Canva
     currentCanvaEmail = '';
+
+    if (!currentProduct) {
+        return;
+    }
 
     document.getElementById('product-title').innerText =
         currentProduct.name;
@@ -484,11 +629,12 @@ function openProduct(productId) {
             currentProduct.name
         );
 
-    img.onerror = () =>
+    img.onerror = () => {
         handleImageError(
             img,
             currentProduct.name
         );
+    };
 
     renderProductSteps();
 
@@ -496,25 +642,12 @@ function openProduct(productId) {
 }
 
 
-// ============================================================
-// BACK
-// ============================================================
+// =========================================================
+// BACK PRODUCT STEP
+// =========================================================
 
 function goBackProductStep() {
 
-    // Kalau sedang di form email Canva
-    if (
-        currentProduct &&
-        currentProduct.id === 'canva' &&
-        currentSelections.length === 2 &&
-        currentCanvaEmail === ''
-    ) {
-        currentSelections.pop();
-        renderProductSteps();
-        return;
-    }
-
-    // Kalau sudah ada email Canva
     if (
         currentProduct &&
         currentProduct.id === 'canva' &&
@@ -522,7 +655,9 @@ function goBackProductStep() {
         currentCanvaEmail !== ''
     ) {
         currentCanvaEmail = '';
+
         renderProductSteps();
+
         return;
     }
 
@@ -535,16 +670,19 @@ function goBackProductStep() {
     } else {
 
         navigate('category');
-
     }
 }
 
 
-// ============================================================
-// RENDER PRODUCT
-// ============================================================
+// =========================================================
+// RENDER PRODUCT STEPS
+// =========================================================
 
 function renderProductSteps() {
+
+    if (!currentProduct) {
+        return;
+    }
 
     const stepContainer =
         document.getElementById('step-container');
@@ -559,28 +697,9 @@ function renderProductSteps() {
         document.getElementById('step-label');
 
 
-    // ========================================================
-    // AMBIL DATA BERDASARKAN PILIHAN
-    // ========================================================
-
-    let currentDataLevel =
-        currentProduct.data;
-
-    for (
-        let i = 0;
-        i < currentSelections.length;
-        i++
-    ) {
-
-        currentDataLevel =
-            currentDataLevel[currentSelections[i]];
-
-    }
-
-
-    // ========================================================
-    // KHUSUS CANVA - EMAIL
-    // ========================================================
+    // =====================================================
+    // CANVA EMAIL
+    // =====================================================
 
     if (
         currentProduct.id === 'canva' &&
@@ -592,52 +711,70 @@ function renderProductSteps() {
 
         summaryContainer.style.display = 'none';
 
-        stepLabel.innerText = 'Enter email';
+        stepLabel.innerText =
+            'Enter your Canva email';
 
         optionsContainer.innerHTML = `
 
-            <div
-                style="
-                    width: 100%;
-                    max-width: 400px;
-                    margin: 0 auto;
-                "
-            >
+            <div style="
+                grid-column: 1 / -1;
+                width: 100%;
+            ">
 
                 <input
                     type="email"
                     id="canva-email"
-                    placeholder="Masukkan email Canva"
+                    placeholder="your@email.com"
+                    autocomplete="email"
                     style="
                         width: 100%;
-                        box-sizing: border-box;
-                        padding: 14px;
-                        border: 1px solid #73151B;
-                        border-radius: 8px;
-                        font-size: 15px;
-                        margin-bottom: 12px;
+                        padding: 12px;
+                        border: 1px solid #c9d9e5;
+                        border-radius: 7px;
+                        font-family: Poppins, sans-serif;
+                        font-size: 12px;
+                        outline: none;
                     "
                 >
 
                 <button
-                    class="option-btn"
+                    class="btn-primary"
                     onclick="submitCanvaEmail()"
-                    style="width: 100%;"
+                    style="margin-top: 12px;"
                 >
-                    Continue
+                    CONTINUE
                 </button>
 
             </div>
-
         `;
 
         return;
     }
 
 
-    // ========================================================
-    // SUMMARY
-    // ========================================================
+    // =====================================================
+    // GET CURRENT DATA LEVEL
+    // =====================================================
+
+    let currentDataLevel =
+        currentProduct.data;
+
+    for (
+        let i = 0;
+        i < currentSelections.length;
+        i++
+    ) {
+
+        currentDataLevel =
+            currentDataLevel[
+                currentSelections[i]
+            ];
+    }
+
+
+    // =====================================================
+    // FINAL SUMMARY
+    // =====================================================
 
     if (
         currentSelections.length ===
@@ -655,176 +792,174 @@ function renderProductSteps() {
             currentProduct.name;
 
 
-        // =========================
-        // SUMMARY CANVA
-        // =========================
-
-        if (currentProduct.id === 'canva') {
-
-            document.getElementById(
-                'summary-details'
-            ).innerHTML = `
-
-                ${currentSelections[0]}
-                <br>
-
-                ${currentSelections[1]}
-                <br>
-
-                Email: ${currentCanvaEmail}
-
-            `;
-
-        }
-
-        // =========================
-        // SUMMARY PRODUK LAIN
-        // =========================
-
-        else {
-
-            document.getElementById(
-                'summary-details'
-            ).innerHTML =
-                currentSelections.join(' <br> ');
-
-        }
+        let summaryHTML =
+            currentSelections.join('<br>');
 
 
-        // =========================
-        // CARI HARGA
-        // =========================
-
-        let priceData =
-            currentProduct.data;
-
-
-        for (
-            let i = 0;
-            i < currentSelections.length;
-            i++
+        if (
+            currentProduct.id === 'canva' &&
+            currentCanvaEmail
         ) {
 
-            priceData =
-                priceData[currentSelections[i]];
-
+            summaryHTML += `
+                <br>
+                <strong>Email:</strong>
+                ${currentCanvaEmail}
+            `;
         }
+
+
+        document.getElementById(
+            'summary-details'
+        ).innerHTML =
+            summaryHTML;
 
 
         document.getElementById(
             'summary-price'
         ).innerText =
-            formatRupiah(priceData);
+            formatRupiah(currentDataLevel);
 
 
-    } else {
-
-        // ====================================================
-        // PILIHAN BIASA
-        // ====================================================
-
-        stepContainer.style.display = 'block';
-
-        summaryContainer.style.display = 'none';
-
-        stepLabel.innerText =
-            currentProduct.stepLabels[
-                currentSelections.length
-            ];
-
-        optionsContainer.innerHTML = '';
-
-
-        const options =
-            Object.keys(currentDataLevel);
-
-
-        options.forEach(opt => {
-
-            const btn =
-                document.createElement('button');
-
-            btn.className =
-                'option-btn';
-
-            btn.innerText = opt;
-
-
-            btn.onclick = () => {
-
-                btn.classList.add(
-                    'active-simulated'
-                );
-
-
-                setTimeout(() => {
-
-                    currentSelections.push(opt);
-
-                    renderProductSteps();
-
-                }, 150);
-
-            };
-
-
-            optionsContainer.appendChild(btn);
-
-        });
-
+        return;
     }
+
+
+    // =====================================================
+    // NORMAL OPTIONS
+    // =====================================================
+
+    stepContainer.style.display = 'block';
+
+    summaryContainer.style.display = 'none';
+
+
+    stepLabel.innerText =
+        currentProduct.stepLabels[
+            currentSelections.length
+        ];
+
+
+    optionsContainer.innerHTML = '';
+
+
+    const options =
+        Object.keys(currentDataLevel);
+
+
+    options.forEach(opt => {
+
+        const btn =
+            document.createElement('button');
+
+        btn.className =
+            'option-btn';
+
+        btn.innerText =
+            opt;
+
+
+        btn.onclick = () => {
+
+            btn.classList.add(
+                'active-simulated'
+            );
+
+            setTimeout(() => {
+
+                currentSelections.push(opt);
+
+                renderProductSteps();
+
+            }, 120);
+        };
+
+
+        optionsContainer.appendChild(btn);
+    });
 }
 
 
-// ============================================================
-// SUBMIT EMAIL CANVA
-// ============================================================
+// =========================================================
+// SUBMIT CANVA EMAIL
+// =========================================================
 
 function submitCanvaEmail() {
 
-    const emailInput =
+    const input =
         document.getElementById('canva-email');
 
+    if (!input) {
+        return;
+    }
+
     const email =
-        emailInput.value.trim();
+        input.value.trim();
 
 
     if (!email) {
 
-        showToast('Email wajib diisi!');
+        showToast(
+            'Masukkan email Canva dulu!'
+        );
+
+        input.focus();
 
         return;
     }
 
 
-    if (!emailInput.checkValidity()) {
+    const emailPattern =
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        showToast('Format email tidak valid!');
+
+    if (!emailPattern.test(email)) {
+
+        showToast(
+            'Format email belum benar!'
+        );
+
+        input.focus();
 
         return;
     }
 
 
-    currentCanvaEmail =
-        email;
-
+    currentCanvaEmail = email;
 
     renderProductSteps();
 }
 
 
-// ============================================================
+// =========================================================
 // ADD TO CART
-// ============================================================
+// =========================================================
 
 function addToCart() {
 
+    if (!currentProduct) {
+        return;
+    }
+
+
+    // Canva harus punya email
+    if (
+        currentProduct.id === 'canva' &&
+        !currentCanvaEmail
+    ) {
+
+        showToast(
+            'Email Canva belum diisi!'
+        );
+
+        return;
+    }
+
+
+    // Ambil harga
     let price =
         currentProduct.data;
 
-
-    // Harga selalu dihitung dari pilihan yang ada
-    // di database. Email Canva tidak ikut dihitung.
 
     for (
         let i = 0;
@@ -833,24 +968,27 @@ function addToCart() {
     ) {
 
         price =
-            price[currentSelections[i]];
-
+            price[
+                currentSelections[i]
+            ];
     }
 
 
+    // Buat item
     const cartItem = {
 
         id: currentProduct.id,
 
         name: currentProduct.name,
 
-        selections: [...currentSelections],
+        selections: [
+            ...currentSelections
+        ],
 
-        price: price,
+        price: Number(price),
 
         qty: 1,
 
-        // Email hanya disimpan untuk Canva
         email:
             currentProduct.id === 'canva'
                 ? currentCanvaEmail
@@ -858,7 +996,7 @@ function addToCart() {
     };
 
 
-    // Cek barang yang sama
+    // Cari item yang sama persis
     const existingItem =
         cart.find(item =>
 
@@ -867,9 +1005,7 @@ function addToCart() {
             item.selections.join('|') ===
             cartItem.selections.join('|') &&
 
-            item.email ===
-            cartItem.email
-
+            item.email === cartItem.email
         );
 
 
@@ -880,40 +1016,83 @@ function addToCart() {
     } else {
 
         cart.push(cartItem);
-
     }
 
 
     updateCartBadge();
 
-    showToast('Added to Cart!');
+    showToast('ADDED TO CART!');
 
     navigate('category');
 }
 
 
-// ============================================================
+// =========================================================
 // CART BADGE
-// ============================================================
+// =========================================================
 
 function updateCartBadge() {
 
     const totalItems =
         cart.reduce(
-            (sum, item) => sum + item.qty,
+            (sum, item) =>
+                sum + item.qty,
             0
         );
 
-    document.getElementById(
-        'cart-badge'
-    ).innerText =
-        totalItems;
+
+    const badge =
+        document.getElementById(
+            'cart-badge'
+        );
+
+
+    if (badge) {
+        badge.innerText =
+            totalItems;
+    }
 }
 
 
-// ============================================================
-// RENDER CART
-// ============================================================
+// =========================================================
+// RECEIPT DATE
+// =========================================================
+
+function updateReceiptDate() {
+
+    const dateElement =
+        document.getElementById(
+            'receipt-date'
+        );
+
+    if (!dateElement) {
+        return;
+    }
+
+
+    const now =
+        new Date();
+
+
+    const formattedDate =
+        now.toLocaleDateString(
+            'id-ID',
+            {
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric'
+            }
+        );
+
+
+    dateElement.innerText =
+        formattedDate;
+}
+
+
+// =========================================================
+// RENDER CART / RECEIPT
+// =========================================================
 
 function renderCart() {
 
@@ -922,14 +1101,32 @@ function renderCart() {
             'cart-items-container'
         );
 
-    const footer =
-        document.getElementById(
-            'cart-footer'
-        );
+    if (!container) {
+        return;
+    }
 
 
     container.innerHTML = '';
 
+
+    updateReceiptDate();
+
+
+    // Hide old footer
+    const oldFooter =
+        document.getElementById(
+            'cart-footer'
+        );
+
+    if (oldFooter) {
+        oldFooter.style.display =
+            'none';
+    }
+
+
+    // =====================================================
+    // EMPTY CART
+    // =====================================================
 
     if (cart.length === 0) {
 
@@ -937,7 +1134,9 @@ function renderCart() {
 
             <div class="empty-cart">
 
-                <p>Your cart is empty.</p>
+                <p>
+                    Your cart is empty.
+                </p>
 
                 <button
                     class="btn-primary"
@@ -952,17 +1151,22 @@ function renderCart() {
                 </button>
 
             </div>
-
         `;
 
-        footer.style.display = 'none';
+
+        document.getElementById(
+            'cart-total-price'
+        ).innerText =
+            'Rp 0';
+
 
         return;
     }
 
 
-    footer.style.display = 'block';
-
+    // =====================================================
+    // CART ITEMS
+    // =====================================================
 
     let totalPrice = 0;
 
@@ -972,51 +1176,71 @@ function renderCart() {
         const itemTotal =
             item.price * item.qty;
 
-        totalPrice += itemTotal;
+
+        totalPrice +=
+            itemTotal;
 
 
-        let detailsText =
+        const detailsText =
             item.selections.join(' · ');
-
-
-        // Tambahkan email Canva di cart
-        if (
-            item.id === 'canva' &&
-            item.email
-        ) {
-
-            detailsText +=
-                ` · ${item.email}`;
-
-        }
 
 
         const div =
             document.createElement('div');
 
+
         div.className =
-            'cart-item';
+            'receipt-item';
 
 
         div.innerHTML = `
 
-            <div class="cart-item-header">
+            <div
+                class="receipt-item-title"
+            >
+                ${String(index + 1).padStart(2, '0')}
+                &nbsp; ${item.name}
+            </div>
 
-                <div>
 
-                    <div class="cart-item-title">
-                        ${item.name}
-                    </div>
+            <div
+                class="receipt-item-details"
+            >
 
-                    <div class="cart-item-details">
-                        ${detailsText}
-                    </div>
+                ${detailsText}
 
-                </div>
+                ${
+                    item.email
+                        ? `<br>Email: ${item.email}`
+                        : ''
+                }
 
-                <div class="cart-item-price">
+            </div>
+
+
+            <div
+                style="
+                    display:flex;
+                    justify-content:space-between;
+                    align-items:center;
+                    margin-top:7px;
+                "
+            >
+
+                <span
+                    class="receipt-item-price"
+                >
                     ${formatRupiah(itemTotal)}
-                </div>
+                </span>
+
+                <span
+                    style="
+                        font-size:10px;
+                        color:#71879a;
+                    "
+                >
+                    Qty: ${item.qty}
+                </span>
 
             </div>
 
@@ -1029,12 +1253,19 @@ function renderCart() {
                         class="qty-btn"
                         onclick="updateQty(${index}, -1)"
                     >
-                        -
+                        −
                     </button>
 
-                    <span>
+
+                    <span
+                        style="
+                            font-size:12px;
+                            font-weight:600;
+                        "
+                    >
                         ${item.qty}
                     </span>
+
 
                     <button
                         class="qty-btn"
@@ -1054,14 +1285,16 @@ function renderCart() {
                 </button>
 
             </div>
-
         `;
 
 
         container.appendChild(div);
-
     });
 
+
+    // =====================================================
+    // TOTAL
+    // =====================================================
 
     document.getElementById(
         'cart-total-price'
@@ -1070,22 +1303,23 @@ function renderCart() {
 }
 
 
-// ============================================================
+// =========================================================
 // UPDATE QTY
-// ============================================================
+// =========================================================
 
 function updateQty(index, change) {
 
-    if (
-        cart[index].qty + change > 0
-    ) {
+    if (!cart[index]) {
+        return;
+    }
 
-        cart[index].qty += change;
 
-    } else {
+    cart[index].qty += change;
+
+
+    if (cart[index].qty <= 0) {
 
         cart.splice(index, 1);
-
     }
 
 
@@ -1095,125 +1329,210 @@ function updateQty(index, change) {
 }
 
 
-// ============================================================
+// =========================================================
 // REMOVE ITEM
-// ============================================================
+// =========================================================
 
 function removeItem(index) {
 
+    if (!cart[index]) {
+        return;
+    }
+
+
     cart.splice(index, 1);
+
 
     updateCartBadge();
 
     renderCart();
+
+
+    showToast(
+        'ITEM REMOVED'
+    );
 }
 
 
-// ============================================================
+// =========================================================
 // PROCESS ORDER
-// ============================================================
+// =========================================================
 
 function processOrder() {
+
+    if (cart.length === 0) {
+
+        showToast(
+            'CART MASIH KOSONG!'
+        );
+
+        return;
+    }
+
 
     let totalPrice = 0;
 
 
+    // =====================================================
+    // CUSTOMER DATA
+    // =====================================================
+
+    const usernameInput =
+        document.getElementById(
+            'order-username'
+        );
+
+    const deviceInput =
+        document.getElementById(
+            'order-device'
+        );
+
+    const paymentInput =
+        document.getElementById(
+            'order-payment'
+        );
+
+
+    const username =
+        usernameInput
+            ? usernameInput.value.trim()
+            : '';
+
+
+    const device =
+        deviceInput
+            ? deviceInput.value.trim()
+            : '';
+
+
+    const payment =
+        paymentInput
+            ? paymentInput.value
+            : 'QRIS';
+
+
+    // =====================================================
+    // DATE
+    // =====================================================
+
+    const now =
+        new Date();
+
+
+    const date =
+        now.toLocaleDateString(
+            'id-ID',
+            {
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric'
+            }
+        );
+
+
+    // =====================================================
+    // ORDER TEXT
+    // =====================================================
+
     let orderText =
-        `NASNOWCI — ORDER\n\n`;
+`╔══════════════════════════╗
+        NASNOWCI
+          ORDER
+╚══════════════════════════╝
+
+DATE
+${date}
+
+──────────────────────────
+ITEM
+`;
 
 
-    orderText +=
-        `────────────────────\n`;
-
-    orderText +=
-        `PESANAN\n\n`;
-
+    // =====================================================
+    // ITEMS
+    // =====================================================
 
     cart.forEach((item, index) => {
 
         const subtotal =
             item.price * item.qty;
 
-        totalPrice += subtotal;
+
+        totalPrice +=
+            subtotal;
 
 
-        orderText +=
-            `${index + 1}. ${item.name}\n`;
+        orderText += `
+
+${String(index + 1).padStart(2, '0')}  ${item.name}
+    ${item.selections.join(' • ')}
+
+`;
 
 
-        // =========================
-        // CANVA
-        // =========================
-
-        if (item.id === 'canva') {
-
-            orderText +=
-                `   ${item.selections[0]} • ${item.selections[1]}\n`;
-
-            orderText +=
-                `   Email: ${item.email}\n`;
-
-        }
-
-        // =========================
-        // PRODUK LAIN
-        // =========================
-
-        else {
+        if (item.email) {
 
             orderText +=
-                `   ${item.selections.join(" • ")}\n`;
-
+`    Email: ${item.email}
+`;
         }
 
 
         orderText +=
-            `   Qty: ${item.qty}\n`;
-
-        orderText +=
-            `   ${formatRupiah(subtotal)}\n\n`;
-
+`    Qty      : ${item.qty}
+    Price    : ${formatRupiah(subtotal)}
+`;
     });
 
 
-    orderText +=
-        `────────────────────\n`;
+    // =====================================================
+    // TOTAL
+    // =====================================================
 
     orderText +=
-        `TOTAL: ${formatRupiah(totalPrice)}\n\n`;
+`
+
+──────────────────────────
+TOTAL
+                         ${formatRupiah(totalPrice)}
+──────────────────────────
+
+CUSTOMER
+
+Username
+${username || '@__________'}
+
+Device Login
+${device || '________________'}
+
+Payment
+${payment}
+
+──────────────────────────
+      THANK YOU ♡
+   NASNOWCI STORE
+──────────────────────────`;
 
 
-    orderText +=
-        `Username:\n`;
-
-    orderText +=
-        `@__________\n\n`;
-
-
-    orderText +=
-        `Device Login:\n`;
-
-    orderText +=
-        `________________\n\n`;
-
-
-    orderText +=
-        `Payment:\n`;
-
-    orderText +=
-        `QRIS\n`;
-
-
-    orderText +=
-        `────────────────────`;
-
+    // =====================================================
+    // COPY
+    // =====================================================
 
     const textarea =
-        document.createElement('textarea');
+        document.createElement(
+            'textarea'
+        );
 
 
     textarea.value =
         orderText;
+
+
+    textarea.style.position =
+        'fixed';
+
+    textarea.style.left =
+        '-9999px';
 
 
     document.body.appendChild(
@@ -1221,55 +1540,91 @@ function processOrder() {
     );
 
 
+    textarea.focus();
+
     textarea.select();
 
 
     try {
 
-        document.execCommand('copy');
+        const copied =
+            document.execCommand(
+                'copy'
+            );
 
-        showToast(
-            "ORDER COPIED!"
-        );
+
+        if (copied) {
+
+            showToast(
+                'ORDER COPIED!'
+            );
+
+        } else {
+
+            showToast(
+                'Gagal copy order'
+            );
+        }
 
     } catch (err) {
 
         console.error(
-            'Failed to copy text:',
+            'Failed to copy:',
             err
         );
 
         showToast(
-            "Gagal copy order"
+            'Gagal copy order'
         );
 
+    } finally {
+
+        document.body.removeChild(
+            textarea
+        );
     }
-
-
-    document.body.removeChild(
-        textarea
-    );
 }
 
 
-// ============================================================
+// =========================================================
 // TOAST
-// ============================================================
+// =========================================================
 
 function showToast(message) {
 
     const toast =
-        document.getElementById('toast');
+        document.getElementById(
+            'toast'
+        );
+
+
+    if (!toast) {
+        return;
+    }
+
 
     toast.innerText =
         message;
 
-    toast.classList.add('show');
+
+    toast.classList.add(
+        'show'
+    );
 
 
     setTimeout(() => {
 
-        toast.classList.remove('show');
+        toast.classList.remove(
+            'show'
+        );
 
     }, 2500);
 }
+
+
+// =========================================================
+// INITIALIZE
+// =========================================================
+
+updateCartBadge();
+```
