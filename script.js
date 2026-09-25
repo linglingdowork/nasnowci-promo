@@ -1127,8 +1127,8 @@ function processOrder() {
     const payment = document.getElementById('order-payment')?.value || 'QRIS';
 
     let orderText = `╭──────────────────────────╮
-│        NASNOWCI          │
-│          ORDER           │
+│        NASNOWCI                               │
+│          ORDER                                │
 ╰──────────────────────────╯\n\nPESANAN
 ────────────────────────────\n\n`;
 
@@ -1147,7 +1147,7 @@ function processOrder() {
         orderText += `    Harga : ${formatRupiah(subtotal)}\n\n`;
     });
 
-    orderText += `────────────────────────────\nTOTAL\n${formatRupiah(totalPrice)}\n────────────────────────────\n\nCUSTOMER\n────────────────────────────\n\nUsername\n${username}\n\nDevice Login\n${device}\n\nPayment\n${payment}\n\n────────────────────────────\n       THANK YOU ♡\n      NASNOWCI STORE\n────────────────────────────`;
+    orderText += `────────────────────────────\nTOTAL\n${formatRupiah(totalPrice)}\n────────────────────────────\n\nCUSTOMER\n────────────────────────────\n\nUsername\n$@{username}\n\nDevice Login\n${device}\n\nPayment\n${payment}\n\n────────────────────────────\n       THANK YOU ♡\n      NASNOWCI STORE\n────────────────────────────`;
 
     const textarea = document.createElement('textarea');
     textarea.value = orderText;
