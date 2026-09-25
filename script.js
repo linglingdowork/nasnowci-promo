@@ -1,14 +1,11 @@
 ```javascript
-// =========================================================
-// NASNOWCI
-// SCRIPT.JS
-// Poppins + Snow Christmas + Receipt Order
-// =========================================================
+// ============================================================
+// NASNOWCI - SCRIPT.JS
+// ============================================================
 
-
-// =========================================================
+// ============================================================
 // TELEGRAM WEB APP
-// =========================================================
+// ============================================================
 
 let tg = null;
 
@@ -19,9 +16,9 @@ if (window.Telegram && window.Telegram.WebApp) {
 }
 
 
-// =========================================================
+// ============================================================
 // IMAGE HELPER
-// =========================================================
+// ============================================================
 
 function getImageUrl(filename, appName) {
     return filename;
@@ -31,21 +28,19 @@ function handleImageError(imgElement, appName) {
     imgElement.onerror = null;
 
     imgElement.src =
-        `https://placehold.co/100x100/FFF9EF/73151B?text=${appName
-            .substring(0, 3)
-            .toUpperCase()}`;
+        `https://placehold.co/100x100/FFF9EF/73151B?text=${appName.substring(0,3).toUpperCase()}`;
 }
 
 
-// =========================================================
+// ============================================================
 // DATABASE
-// =========================================================
+// ============================================================
 
 const database = [
 
-    // =====================================================
+    // ========================================================
     // STREAMING APPS
-    // =====================================================
+    // ========================================================
 
     {
         category: 'STREAMING APPS',
@@ -60,18 +55,20 @@ const database = [
 
         data: {
             'SHARING': {
-                '1 DAY': 4000,
-                '2 DAYS': 6000,
-                '3 DAYS': 9000,
-                '5 DAYS': 12000,
-                '7 DAYS': 15000,
-                '14 DAYS': 24000,
-                '21 DAYS': 34000,
-                '1 MONTH': 45000
+                '1 DAY': 3500,
+                '2 DAYS': 5000,
+                '3 DAYS': 7000,
+                '5 DAYS': 9000,
+                '7 DAYS': 12000,
+                '14 DAYS': 20000,
+                '21 DAYS': 30000,
+                '1 MONTH': 39000,
+                '2 MONTHS': 68000,
+                '3 MONTHS': 95000
             },
 
             'PRIVATE': {
-                '1 MONTH': 175000
+                '1 MONTH': 165000
             }
         }
     },
@@ -90,14 +87,14 @@ const database = [
 
         data: {
             'SHARING': {
-                '1 DAY': 4000,
-                '2 DAYS': 7000,
-                '3 DAYS': 10000,
-                '5 DAYS': 13000,
-                '7 DAYS': 15000,
-                '14 DAYS': 22000,
-                '21 DAYS': 30000,
-                '1 MONTH': 35000
+                '1 DAY': 3000,
+                '2 DAYS': 6000,
+                '3 DAYS': 8000,
+                '5 DAYS': 10000,
+                '7 DAYS': 13000,
+                '14 DAYS': 20000,
+                '21 DAYS': 28000,
+                '1 MONTH': 30000
             },
 
             'PRIVATE': {
@@ -120,18 +117,18 @@ const database = [
 
         data: {
             'PRIVATE ANTI LIMIT': {
-                '1 DAY': 2000,
-                '2 DAYS': 3000,
-                '3 DAYS': 4000,
-                '5 DAYS': 5000,
-                '7 DAYS': 6000,
-                '1 MONTH': 10000,
-                '2 MONTHS': 15000,
-                '3 MONTHS': 17000,
-                '4 MONTHS': 20000,
-                '5 MONTHS': 23000,
-                '6 MONTHS': 25000,
-                '1 YEAR': 35000
+                '1 DAY': 1000,
+                '2 DAYS': 2000,
+                '3 DAYS': 3000,
+                '5 DAYS': 4000,
+                '7 DAYS': 5000,
+                '1 MONTH': 6000,
+                '2 MONTHS': 9000,
+                '3 MONTHS': 12000,
+                '4 MONTHS': 15000,
+                '5 MONTHS': 18000,
+                '6 MONTHS': 20000,
+                '1 YEAR': 30000
             }
         }
     },
@@ -150,13 +147,13 @@ const database = [
 
         data: {
             'SHARING STANDARD': {
-                '1 MONTH': 10000,
-                '3 MONTHS': 17000
+                '1 MONTH': 8000,
+                '3 MONTHS': 15000
             },
 
             'SHARING PREMIUM': {
-                '1 MONTH': 12000,
-                '3 MONTHS': 20000
+                '1 MONTH': 10000,
+                '3 MONTHS': 18000
             },
 
             'PRIVATE STANDARD': {
@@ -211,12 +208,16 @@ const database = [
         data: {
             'SHARING': {
                 '1 DAY': 3500,
-                '3 DAYS': 9000,
-                '7 DAYS': 15000,
-                '1 MONTH': 24000
+                '3 DAYS': 7000,
+                '7 DAYS': 13000,
+                '1 MONTH': 20000
             },
 
-            'PRIVATE': {
+            'PRIVATE BASIC': {
+                '1 MONTH': 45000
+            },
+
+            'PRIVATE ULTIMATE': {
                 '1 MONTH': 90000
             }
         }
@@ -236,11 +237,11 @@ const database = [
 
         data: {
             'SHARING': {
-                '1 MONTH': 13000
+                '1 MONTH': 10000
             },
 
             'PRIVATE': {
-                '1 MONTH': 42000
+                '1 MONTH': 40000
             }
         }
     },
@@ -259,11 +260,11 @@ const database = [
 
         data: {
             'SHARING BASIC': {
-                '1 MONTH': 22000
+                '1 MONTH': 20000
             },
 
             'SHARING STANDART': {
-                '1 MONTH': 27000
+                '1 MONTH': 25000
             }
         }
     },
@@ -282,8 +283,8 @@ const database = [
 
         data: {
             'SHARING': {
-                '1 MONTH': 10000,
-                '3 MONTHS': 17000
+                '1 MONTH': 9000,
+                '3 MONTHS': 15000
             }
         }
     },
@@ -310,13 +311,13 @@ const database = [
 
             'MOBILE': {
                 'PRIVATE': {
-                    '1 MONTH': 30000
+                    '1 MONTH': 28000
                 }
             },
 
             'ALL DEVICE': {
                 'PRIVATE': {
-                    '1 MONTH': 45000
+                    '1 MONTH': 43000
                 }
             }
         }
@@ -336,13 +337,13 @@ const database = [
 
         data: {
             'FAMPLAN': {
-                '1 MONTH': 15000,
-                '2 MONTHS': 25000
+                '1 MONTH': 10000,
+                '2 MONTHS': 20000
             },
 
             'INDPLAN': {
                 '1 MONTH': 25000,
-                '2 MONTHS': 35000
+                '2 MONTHS': 40000
             }
         }
     },
@@ -361,7 +362,7 @@ const database = [
 
         data: {
             'SHARING': {
-                '1 MONTH': 18000
+                '1 MONTH': 13000
             }
         }
     },
@@ -380,23 +381,23 @@ const database = [
 
         data: {
             'SHARING': {
-                '1 DAY': 3000,
-                '3 DAYS': 6000,
-                '7 DAYS': 8000,
-                '1 MONTH (4U)': 10000,
-                '1 MONTH (2U)': 13000
+                '1 DAY': 2000,
+                '3 DAYS': 4000,
+                '7 DAYS': 6000,
+                '1 MONTH (4U)': 8000,
+                '1 MONTH (2U)': 10000
             },
 
             'PRIVATE': {
-                '1 MONTH': 23000
+                '1 MONTH': 18000
             }
         }
     },
 
 
-    // =====================================================
+    // ========================================================
     // EDITING APPS
-    // =====================================================
+    // ========================================================
 
     {
         category: 'EDITING APPS',
@@ -411,27 +412,27 @@ const database = [
 
         data: {
             'MEMBER': {
-                '1 DAY': 2000,
-                '3 DAYS': 2500,
-                '7 DAYS': 4000,
-                '1 MONTH': 15000,
-                '2 MONTHS': 17000,
-                '3 MONTHS': 19000,
-                '4 MONTHS': 21000,
-                '5 MONTHS': 23000,
-                '6 MONTHS': 25000
+                '1 DAY': 1000,
+                '3 DAYS': 2000,
+                '7 DAYS': 3000,
+                '1 MONTH': 10000,
+                '2 MONTHS': 12000,
+                '3 MONTHS': 14000,
+                '4 MONTHS': 16000,
+                '5 MONTHS': 18000,
+                '6 MONTHS': 20000
             },
 
             'DESIGNER': {
-                '1 DAY': 3000,
-                '3 DAYS': 3500,
-                '7 DAYS': 5000,
-                '1 MONTH': 16000,
-                '2 MONTHS': 18000,
-                '3 MONTHS': 19000,
-                '4 MONTHS': 22000,
-                '5 MONTHS': 24000,
-                '6 MONTHS': 25000
+                '1 DAY': 1000,
+                '3 DAYS': 2000,
+                '7 DAYS': 3000,
+                '1 MONTH': 10000,
+                '2 MONTHS': 12000,
+                '3 MONTHS': 14000,
+                '4 MONTHS': 16000,
+                '5 MONTHS': 18000,
+                '6 MONTHS': 20000
             }
         }
     },
@@ -452,12 +453,12 @@ const database = [
             'SHARING': {
                 '1 DAY': 3000,
                 '2 DAYS': 5000,
-                '3 DAYS': 7000,
-                '7 DAYS': 9000
+                '3 DAYS': 6000,
+                '7 DAYS': 8000
             },
 
             'PRIVATE': {
-                '7 DAYS': 25000,
+                '7 DAYS': 20000,
                 '1 MONTH': 35000
             }
         }
@@ -477,21 +478,21 @@ const database = [
 
         data: {
             'SHARING': {
-                '1 DAY': 1500,
-                '7 DAYS': 5000,
-                '1 MONTH': 8000,
-                '2 MONTHS': 10000,
-                '3 MONTHS': 12000,
-                '4 MONTHS': 13000,
-                '5 MONTHS': 14000,
-                '6 MONTHS': 15000,
-                '1 YEAR': 17000
+                '1 DAY': 1000,
+                '7 DAYS': 3000,
+                '1 MONTH': 6000,
+                '2 MONTHS': 8000,
+                '3 MONTHS': 9000,
+                '4 MONTHS': 10000,
+                '5 MONTHS': 11000,
+                '6 MONTHS': 12000,
+                '1 YEAR': 15000
             },
 
             'PRIVATE': {
-                '7 DAYS': 8000,
-                '1 MONTH': 18000,
-                '1 YEAR': 25000
+                '7 DAYS': 5000,
+                '1 MONTH': 13000,
+                '1 YEAR': 20000
             }
         }
     }
@@ -499,9 +500,9 @@ const database = [
 ];
 
 
-// =========================================================
-// CART & PRODUCT STATE
-// =========================================================
+// ============================================================
+// STATE
+// ============================================================
 
 let cart = [];
 
@@ -514,20 +515,22 @@ let currentSelections = [];
 let currentCanvaEmail = '';
 
 
-// =========================================================
-// RUPIAH
-// =========================================================
+// ============================================================
+// FORMAT RUPIAH
+// ============================================================
 
 function formatRupiah(angka) {
-    return 'Rp ' + Number(angka)
-        .toString()
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+    return 'Rp ' +
+        angka
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
 
-// =========================================================
-// NAVIGATION
-// =========================================================
+// ============================================================
+// NAVIGASI
+// ============================================================
 
 function navigate(viewId) {
 
@@ -537,16 +540,16 @@ function navigate(viewId) {
             el.classList.remove('active');
         });
 
-    const target = document.getElementById('view-' + viewId);
+    const target =
+        document.getElementById(
+            'view-' + viewId
+        );
 
     if (target) {
         target.classList.add('active');
     }
 
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
+    window.scrollTo(0, 0);
 
     if (viewId === 'cart') {
         renderCart();
@@ -554,36 +557,47 @@ function navigate(viewId) {
 }
 
 
-// =========================================================
+// ============================================================
 // OPEN CATEGORY
-// =========================================================
+// ============================================================
 
 function openCategory(category) {
 
     currentCategoryName = category;
 
-    document.getElementById('category-title').innerText = category;
+    document.getElementById(
+        'category-title'
+    ).innerText = category;
+
 
     const listContainer =
-        document.getElementById('app-list-container');
+        document.getElementById(
+            'app-list-container'
+        );
 
     listContainer.innerHTML = '';
 
+
     const apps =
-        database.filter(app => app.category === category);
+        database.filter(
+            app => app.category === category
+        );
+
 
     apps.forEach(app => {
 
         const card =
             document.createElement('div');
 
-        card.className = 'app-card';
+        card.className =
+            'app-card';
 
-        card.onclick = () => {
+        card.onclick = () =>
             openProduct(app.id);
-        };
+
 
         card.innerHTML = `
+
             <img
                 src="${getImageUrl(app.image, app.name)}"
                 alt="${app.name}"
@@ -591,37 +605,52 @@ function openCategory(category) {
             >
 
             <h4>${app.name}</h4>
+
         `;
 
+
         listContainer.appendChild(card);
+
     });
+
 
     navigate('category');
 }
 
 
-// =========================================================
+// ============================================================
 // OPEN PRODUCT
-// =========================================================
+// ============================================================
 
 function openProduct(productId) {
 
     currentProduct =
-        database.find(app => app.id === productId);
+        database.find(
+            a => a.id === productId
+        );
 
-    currentSelections = [];
-
-    currentCanvaEmail = '';
 
     if (!currentProduct) {
         return;
     }
 
-    document.getElementById('product-title').innerText =
+
+    currentSelections = [];
+
+    currentCanvaEmail = '';
+
+
+    document.getElementById(
+        'product-title'
+    ).innerText =
         currentProduct.name;
 
+
     const img =
-        document.getElementById('product-image');
+        document.getElementById(
+            'product-image'
+        );
+
 
     img.src =
         getImageUrl(
@@ -629,12 +658,13 @@ function openProduct(productId) {
             currentProduct.name
         );
 
-    img.onerror = () => {
+
+    img.onerror = () =>
         handleImageError(
             img,
             currentProduct.name
         );
-    };
+
 
     renderProductSteps();
 
@@ -642,9 +672,9 @@ function openProduct(productId) {
 }
 
 
-// =========================================================
+// ============================================================
 // BACK PRODUCT STEP
-// =========================================================
+// ============================================================
 
 function goBackProductStep() {
 
@@ -654,6 +684,7 @@ function goBackProductStep() {
         currentSelections.length === 2 &&
         currentCanvaEmail !== ''
     ) {
+
         currentCanvaEmail = '';
 
         renderProductSteps();
@@ -661,7 +692,10 @@ function goBackProductStep() {
         return;
     }
 
-    if (currentSelections.length > 0) {
+
+    if (
+        currentSelections.length > 0
+    ) {
 
         currentSelections.pop();
 
@@ -670,13 +704,14 @@ function goBackProductStep() {
     } else {
 
         navigate('category');
+
     }
 }
 
 
-// =========================================================
+// ============================================================
 // RENDER PRODUCT STEPS
-// =========================================================
+// ============================================================
 
 function renderProductSteps() {
 
@@ -684,22 +719,52 @@ function renderProductSteps() {
         return;
     }
 
+
     const stepContainer =
-        document.getElementById('step-container');
+        document.getElementById(
+            'step-container'
+        );
 
     const summaryContainer =
-        document.getElementById('summary-container');
+        document.getElementById(
+            'summary-container'
+        );
 
     const optionsContainer =
-        document.getElementById('options-container');
+        document.getElementById(
+            'options-container'
+        );
 
     const stepLabel =
-        document.getElementById('step-label');
+        document.getElementById(
+            'step-label'
+        );
 
 
-    // =====================================================
+    // ========================================================
+    // AMBIL DATA SESUAI PILIHAN
+    // ========================================================
+
+    let currentDataLevel =
+        currentProduct.data;
+
+
+    for (
+        let i = 0;
+        i < currentSelections.length;
+        i++
+    ) {
+
+        currentDataLevel =
+            currentDataLevel[
+                currentSelections[i]
+            ];
+    }
+
+
+    // ========================================================
     // CANVA EMAIL
-    // =====================================================
+    // ========================================================
 
     if (
         currentProduct.id === 'canva' &&
@@ -707,19 +772,25 @@ function renderProductSteps() {
         currentCanvaEmail === ''
     ) {
 
-        stepContainer.style.display = 'block';
+        stepContainer.style.display =
+            'block';
 
-        summaryContainer.style.display = 'none';
+        summaryContainer.style.display =
+            'none';
+
 
         stepLabel.innerText =
             'Enter your Canva email';
 
+
         optionsContainer.innerHTML = `
 
-            <div style="
-                grid-column: 1 / -1;
-                width: 100%;
-            ">
+            <div
+                style="
+                    grid-column: 1 / -1;
+                    width: 100%;
+                "
+            >
 
                 <input
                     type="email"
@@ -746,44 +817,27 @@ function renderProductSteps() {
                 </button>
 
             </div>
+
         `;
 
         return;
     }
 
 
-    // =====================================================
-    // GET CURRENT DATA LEVEL
-    // =====================================================
-
-    let currentDataLevel =
-        currentProduct.data;
-
-    for (
-        let i = 0;
-        i < currentSelections.length;
-        i++
-    ) {
-
-        currentDataLevel =
-            currentDataLevel[
-                currentSelections[i]
-            ];
-    }
-
-
-    // =====================================================
-    // FINAL SUMMARY
-    // =====================================================
+    // ========================================================
+    // SUMMARY
+    // ========================================================
 
     if (
         currentSelections.length ===
         currentProduct.stepLabels.length
     ) {
 
-        stepContainer.style.display = 'none';
+        stepContainer.style.display =
+            'none';
 
-        summaryContainer.style.display = 'block';
+        summaryContainer.style.display =
+            'block';
 
 
         document.getElementById(
@@ -792,46 +846,73 @@ function renderProductSteps() {
             currentProduct.name;
 
 
-        let summaryHTML =
-            currentSelections.join('<br>');
-
-
         if (
-            currentProduct.id === 'canva' &&
-            currentCanvaEmail
+            currentProduct.id === 'canva'
         ) {
 
-            summaryHTML += `
+            document.getElementById(
+                'summary-details'
+            ).innerHTML = `
+
+                ${currentSelections[0]}
                 <br>
-                <strong>Email:</strong>
+
+                ${currentSelections[1]}
+                <br>
+
+                Email:
                 ${currentCanvaEmail}
+
             `;
+
+        } else {
+
+            document.getElementById(
+                'summary-details'
+            ).innerHTML =
+                currentSelections.join(
+                    ' <br> '
+                );
+
         }
 
 
-        document.getElementById(
-            'summary-details'
-        ).innerHTML =
-            summaryHTML;
+        let priceData =
+            currentProduct.data;
+
+
+        for (
+            let i = 0;
+            i < currentSelections.length;
+            i++
+        ) {
+
+            priceData =
+                priceData[
+                    currentSelections[i]
+                ];
+        }
 
 
         document.getElementById(
             'summary-price'
         ).innerText =
-            formatRupiah(currentDataLevel);
+            formatRupiah(priceData);
 
 
         return;
     }
 
 
-    // =====================================================
+    // ========================================================
     // NORMAL OPTIONS
-    // =====================================================
+    // ========================================================
 
-    stepContainer.style.display = 'block';
+    stepContainer.style.display =
+        'block';
 
-    summaryContainer.style.display = 'none';
+    summaryContainer.style.display =
+        'none';
 
 
     stepLabel.innerText =
@@ -844,16 +925,22 @@ function renderProductSteps() {
 
 
     const options =
-        Object.keys(currentDataLevel);
+        Object.keys(
+            currentDataLevel
+        );
 
 
     options.forEach(opt => {
 
         const btn =
-            document.createElement('button');
+            document.createElement(
+                'button'
+            );
+
 
         btn.className =
             'option-btn';
+
 
         btn.innerText =
             opt;
@@ -865,33 +952,44 @@ function renderProductSteps() {
                 'active-simulated'
             );
 
+
             setTimeout(() => {
 
-                currentSelections.push(opt);
+                currentSelections.push(
+                    opt
+                );
 
                 renderProductSteps();
 
             }, 120);
+
         };
 
 
-        optionsContainer.appendChild(btn);
+        optionsContainer.appendChild(
+            btn
+        );
+
     });
 }
 
 
-// =========================================================
+// ============================================================
 // SUBMIT CANVA EMAIL
-// =========================================================
+// ============================================================
 
 function submitCanvaEmail() {
 
     const input =
-        document.getElementById('canva-email');
+        document.getElementById(
+            'canva-email'
+        );
+
 
     if (!input) {
         return;
     }
+
 
     const email =
         input.value.trim();
@@ -900,7 +998,7 @@ function submitCanvaEmail() {
     if (!email) {
 
         showToast(
-            'Masukkan email Canva dulu!'
+            'Email Canva wajib diisi!'
         );
 
         input.focus();
@@ -925,15 +1023,17 @@ function submitCanvaEmail() {
     }
 
 
-    currentCanvaEmail = email;
+    currentCanvaEmail =
+        email;
+
 
     renderProductSteps();
 }
 
 
-// =========================================================
+// ============================================================
 // ADD TO CART
-// =========================================================
+// ============================================================
 
 function addToCart() {
 
@@ -942,21 +1042,6 @@ function addToCart() {
     }
 
 
-    // Canva harus punya email
-    if (
-        currentProduct.id === 'canva' &&
-        !currentCanvaEmail
-    ) {
-
-        showToast(
-            'Email Canva belum diisi!'
-        );
-
-        return;
-    }
-
-
-    // Ambil harga
     let price =
         currentProduct.data;
 
@@ -974,18 +1059,17 @@ function addToCart() {
     }
 
 
-    // Buat item
     const cartItem = {
 
         id: currentProduct.id,
 
         name: currentProduct.name,
 
-        selections: [
-            ...currentSelections
-        ],
+        selections:
+            [...currentSelections],
 
-        price: Number(price),
+        price:
+            Number(price),
 
         qty: 1,
 
@@ -996,16 +1080,18 @@ function addToCart() {
     };
 
 
-    // Cari item yang sama persis
     const existingItem =
         cart.find(item =>
 
-            item.id === cartItem.id &&
+            item.id ===
+            cartItem.id &&
 
             item.selections.join('|') ===
             cartItem.selections.join('|') &&
 
-            item.email === cartItem.email
+            item.email ===
+            cartItem.email
+
         );
 
 
@@ -1016,20 +1102,23 @@ function addToCart() {
     } else {
 
         cart.push(cartItem);
+
     }
 
 
     updateCartBadge();
 
-    showToast('ADDED TO CART!');
+    showToast(
+        'ADDED TO CART!'
+    );
 
     navigate('category');
 }
 
 
-// =========================================================
+// ============================================================
 // CART BADGE
-// =========================================================
+// ============================================================
 
 function updateCartBadge() {
 
@@ -1048,51 +1137,17 @@ function updateCartBadge() {
 
 
     if (badge) {
+
         badge.innerText =
             totalItems;
+
     }
 }
 
 
-// =========================================================
-// RECEIPT DATE
-// =========================================================
-
-function updateReceiptDate() {
-
-    const dateElement =
-        document.getElementById(
-            'receipt-date'
-        );
-
-    if (!dateElement) {
-        return;
-    }
-
-
-    const now =
-        new Date();
-
-
-    const formattedDate =
-        now.toLocaleDateString(
-            'id-ID',
-            {
-                day: '2-digit',
-                month: 'long',
-                year: 'numeric'
-            }
-        );
-
-
-    dateElement.innerText =
-        formattedDate;
-}
-
-
-// =========================================================
-// RENDER CART / RECEIPT
-// =========================================================
+// ============================================================
+// RENDER CART
+// ============================================================
 
 function renderCart() {
 
@@ -1100,6 +1155,12 @@ function renderCart() {
         document.getElementById(
             'cart-items-container'
         );
+
+    const footer =
+        document.getElementById(
+            'cart-footer'
+        );
+
 
     if (!container) {
         return;
@@ -1109,24 +1170,9 @@ function renderCart() {
     container.innerHTML = '';
 
 
-    updateReceiptDate();
-
-
-    // Hide old footer
-    const oldFooter =
-        document.getElementById(
-            'cart-footer'
-        );
-
-    if (oldFooter) {
-        oldFooter.style.display =
-            'none';
-    }
-
-
-    // =====================================================
+    // ========================================================
     // EMPTY CART
-    // =====================================================
+    // ========================================================
 
     if (cart.length === 0) {
 
@@ -1151,22 +1197,36 @@ function renderCart() {
                 </button>
 
             </div>
+
         `;
 
 
-        document.getElementById(
-            'cart-total-price'
-        ).innerText =
-            'Rp 0';
+        if (footer) {
+            footer.style.display =
+                'none';
+        }
+
+
+        const total =
+            document.getElementById(
+                'cart-total-price'
+            );
+
+        if (total) {
+            total.innerText =
+                'Rp 0';
+        }
 
 
         return;
     }
 
 
-    // =====================================================
-    // CART ITEMS
-    // =====================================================
+    if (footer) {
+        footer.style.display =
+            'block';
+    }
+
 
     let totalPrice = 0;
 
@@ -1181,66 +1241,51 @@ function renderCart() {
             itemTotal;
 
 
-        const detailsText =
+        let detailsText =
             item.selections.join(' · ');
 
 
+        if (
+            item.id === 'canva' &&
+            item.email
+        ) {
+
+            detailsText +=
+                ` · ${item.email}`;
+
+        }
+
+
         const div =
-            document.createElement('div');
+            document.createElement(
+                'div'
+            );
 
 
         div.className =
-            'receipt-item';
+            'cart-item';
 
 
         div.innerHTML = `
 
-            <div
-                class="receipt-item-title"
-            >
-                ${String(index + 1).padStart(2, '0')}
-                &nbsp; ${item.name}
-            </div>
+            <div class="cart-item-header">
+
+                <div>
+
+                    <div class="cart-item-title">
+                        ${item.name}
+                    </div>
+
+                    <div class="cart-item-details">
+                        ${detailsText}
+                    </div>
+
+                </div>
 
 
-            <div
-                class="receipt-item-details"
-            >
-
-                ${detailsText}
-
-                ${
-                    item.email
-                        ? `<br>Email: ${item.email}`
-                        : ''
-                }
-
-            </div>
-
-
-            <div
-                style="
-                    display:flex;
-                    justify-content:space-between;
-                    align-items:center;
-                    margin-top:7px;
-                "
-            >
-
-                <span
-                    class="receipt-item-price"
-                >
+                <div class="cart-item-price">
                     ${formatRupiah(itemTotal)}
-                </span>
-
-                <span
-                    style="
-                        font-size:10px;
-                        color:#71879a;
-                    "
-                >
-                    Qty: ${item.qty}
-                </span>
+                </div>
 
             </div>
 
@@ -1253,16 +1298,11 @@ function renderCart() {
                         class="qty-btn"
                         onclick="updateQty(${index}, -1)"
                     >
-                        −
+                        -
                     </button>
 
 
-                    <span
-                        style="
-                            font-size:12px;
-                            font-weight:600;
-                        "
-                    >
+                    <span>
                         ${item.qty}
                     </span>
 
@@ -1285,27 +1325,33 @@ function renderCart() {
                 </button>
 
             </div>
+
         `;
 
 
         container.appendChild(div);
+
     });
 
 
-    // =====================================================
-    // TOTAL
-    // =====================================================
+    const totalElement =
+        document.getElementById(
+            'cart-total-price'
+        );
 
-    document.getElementById(
-        'cart-total-price'
-    ).innerText =
-        formatRupiah(totalPrice);
+
+    if (totalElement) {
+
+        totalElement.innerText =
+            formatRupiah(totalPrice);
+
+    }
 }
 
 
-// =========================================================
+// ============================================================
 // UPDATE QTY
-// =========================================================
+// ============================================================
 
 function updateQty(index, change) {
 
@@ -1314,12 +1360,16 @@ function updateQty(index, change) {
     }
 
 
-    cart[index].qty += change;
+    if (
+        cart[index].qty + change > 0
+    ) {
 
+        cart[index].qty += change;
 
-    if (cart[index].qty <= 0) {
+    } else {
 
         cart.splice(index, 1);
+
     }
 
 
@@ -1329,9 +1379,9 @@ function updateQty(index, change) {
 }
 
 
-// =========================================================
+// ============================================================
 // REMOVE ITEM
-// =========================================================
+// ============================================================
 
 function removeItem(index) {
 
@@ -1347,16 +1397,18 @@ function removeItem(index) {
 
     renderCart();
 
-
     showToast(
         'ITEM REMOVED'
     );
 }
 
 
-// =========================================================
+// ============================================================
 // PROCESS ORDER
-// =========================================================
+// ============================================================
+// INI BAGIAN YANG DIBUAT JADI STRUK
+// CART WEBSITE TETAP MODEL CART BIASA
+// ============================================================
 
 function processOrder() {
 
@@ -1373,9 +1425,9 @@ function processOrder() {
     let totalPrice = 0;
 
 
-    // =====================================================
-    // CUSTOMER DATA
-    // =====================================================
+    // ========================================================
+    // AMBIL DATA CUSTOMER
+    // ========================================================
 
     const usernameInput =
         document.getElementById(
@@ -1411,9 +1463,9 @@ function processOrder() {
             : 'QRIS';
 
 
-    // =====================================================
-    // DATE
-    // =====================================================
+    // ========================================================
+    // TANGGAL
+    // ========================================================
 
     const now =
         new Date();
@@ -1430,27 +1482,28 @@ function processOrder() {
         );
 
 
-    // =====================================================
-    // ORDER TEXT
-    // =====================================================
+    // ========================================================
+    // HEADER STRUK
+    // ========================================================
 
     let orderText =
-`╔══════════════════════════╗
-        NASNOWCI
-          ORDER
-╚══════════════════════════╝
+`╭──────────────────────────╮
+│        NASNOWCI          │
+│          ORDER           │
+╰──────────────────────────╯
 
 DATE
 ${date}
 
-──────────────────────────
-ITEM
+────────────────────────────
+PESANAN
+────────────────────────────
 `;
 
 
-    // =====================================================
+    // ========================================================
     // ITEMS
-    // =====================================================
+    // ========================================================
 
     cart.forEach((item, index) => {
 
@@ -1462,61 +1515,66 @@ ITEM
             subtotal;
 
 
-        orderText += `
-
-${String(index + 1).padStart(2, '0')}  ${item.name}
+        orderText +=
+`
+${String(index + 1).padStart(2, '0')}. ${item.name}
     ${item.selections.join(' • ')}
-
 `;
 
 
-        if (item.email) {
+        // KHUSUS CANVA
+        if (
+            item.id === 'canva' &&
+            item.email
+        ) {
 
             orderText +=
-`    Email: ${item.email}
+`    Email : ${item.email}
 `;
+
         }
 
 
         orderText +=
-`    Qty      : ${item.qty}
-    Price    : ${formatRupiah(subtotal)}
+`    Qty   : ${item.qty}
+    Harga : ${formatRupiah(subtotal)}
+
 `;
+
     });
 
 
-    // =====================================================
-    // TOTAL
-    // =====================================================
+    // ========================================================
+    // TOTAL + CUSTOMER
+    // ========================================================
 
     orderText +=
-`
-
-──────────────────────────
+`────────────────────────────
 TOTAL
-                         ${formatRupiah(totalPrice)}
-──────────────────────────
+${formatRupiah(totalPrice)}
+────────────────────────────
 
 CUSTOMER
+────────────────────────────
 
 Username
-${username || '@__________'}
+${username || '@____'}
 
 Device Login
-${device || '________________'}
+${device || '____'}
 
 Payment
 ${payment}
 
-──────────────────────────
-      THANK YOU ♡
-   NASNOWCI STORE
-──────────────────────────`;
+────────────────────────────
+       THANK YOU ♡
+      NASNOWCI STORE
+────────────────────────────`;
 
 
-    // =====================================================
+    // ========================================================
     // COPY
-    // =====================================================
+    // ========================================================
 
     const textarea =
         document.createElement(
@@ -1533,6 +1591,12 @@ ${payment}
 
     textarea.style.left =
         '-9999px';
+
+    textarea.style.top =
+        '0';
+
+    textarea.style.opacity =
+        '0';
 
 
     document.body.appendChild(
@@ -1564,12 +1628,13 @@ ${payment}
             showToast(
                 'Gagal copy order'
             );
+
         }
 
     } catch (err) {
 
         console.error(
-            'Failed to copy:',
+            'Failed to copy text:',
             err
         );
 
@@ -1582,13 +1647,14 @@ ${payment}
         document.body.removeChild(
             textarea
         );
+
     }
 }
 
 
-// =========================================================
+// ============================================================
 // TOAST
-// =========================================================
+// ============================================================
 
 function showToast(message) {
 
@@ -1622,9 +1688,9 @@ function showToast(message) {
 }
 
 
-// =========================================================
+// ============================================================
 // INITIALIZE
-// =========================================================
+// ============================================================
 
 updateCartBadge();
 ```
