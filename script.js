@@ -1202,9 +1202,7 @@ function processOrder() {
         `Username: ${username}\n` +
         `Device: ${device}\n` +
         `Payment: ${payment}\n` +
-        `━━━━━━━━━━━━━━━━━━━━\n` +
-        `      THANK YOU ♡\n` +
-        `     NASNOWCI STORE`;
+        `━━━━━━━━━━━━━━━━━━━━\n`;
 
     const textarea = document.createElement('textarea');
     textarea.value = orderText;
