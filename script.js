@@ -1412,78 +1412,11 @@ function removeItem(index) {
 function processOrder() {
 
     if (cart.length === 0) {
-
-        showToast(
-            'CART MASIH KOSONG!'
-        );
-
+        showToast("CART MASIH KOSONG!");
         return;
     }
 
-
     let totalPrice = 0;
-
-
-    // ========================================================
-    // AMBIL DATA CUSTOMER
-    // ========================================================
-
-    const usernameInput =
-        document.getElementById(
-            'order-username'
-        );
-
-    const deviceInput =
-        document.getElementById(
-            'order-device'
-        );
-
-    const paymentInput =
-        document.getElementById(
-            'order-payment'
-        );
-
-
-    const username =
-        usernameInput
-            ? usernameInput.value.trim()
-            : '';
-
-
-    const device =
-        deviceInput
-            ? deviceInput.value.trim()
-            : '';
-
-
-    const payment =
-        paymentInput
-            ? paymentInput.value
-            : 'QRIS';
-
-
-    // ========================================================
-    // TANGGAL
-    // ========================================================
-
-    const now =
-        new Date();
-
-
-    const date =
-        now.toLocaleDateString(
-            'id-ID',
-            {
-                day: '2-digit',
-                month: 'long',
-                year: 'numeric'
-            }
-        );
-
-
-    // ========================================================
-    // HEADER STRUK
-    // ========================================================
 
     let orderText =
 `╭──────────────────────────╮
@@ -1491,61 +1424,35 @@ function processOrder() {
 │          ORDER           │
 ╰──────────────────────────╯
 
-DATE
-${date}
-
-────────────────────────────
 PESANAN
 ────────────────────────────
+
 `;
-
-
-    // ========================================================
-    // ITEMS
-    // ========================================================
 
     cart.forEach((item, index) => {
 
         const subtotal =
             item.price * item.qty;
 
-
-        totalPrice +=
-            subtotal;
-
+        totalPrice += subtotal;
 
         orderText +=
-`
-${String(index + 1).padStart(2, '0')}. ${item.name}
+`${String(index + 1).padStart(2, '0')}. ${item.name}
     ${item.selections.join(' • ')}
 `;
 
-
-        // KHUSUS CANVA
-        if (
-            item.id === 'canva' &&
-            item.email
-        ) {
-
+        if (item.id === 'canva' && item.email) {
             orderText +=
 `    Email : ${item.email}
 `;
-
         }
-
 
         orderText +=
 `    Qty   : ${item.qty}
     Harga : ${formatRupiah(subtotal)}
 
 `;
-
     });
-
-
-    // ========================================================
-    // TOTAL + CUSTOMER
-    // ========================================================
 
     orderText +=
 `────────────────────────────
@@ -1557,13 +1464,13 @@ CUSTOMER
 ────────────────────────────
 
 Username
-${username || '@____'}
+@__________
 
 Device Login
-${device || '____'}
+________________
 
 Payment
-${payment}
+QRIS
 
 ────────────────────────────
        THANK YOU ♡
@@ -1571,64 +1478,26 @@ ${payment}
 ────────────────────────────`;
 
 
-    // ========================================================
-    // COPY
-    // ========================================================
-
     const textarea =
-        document.createElement(
-            'textarea'
-        );
+        document.createElement('textarea');
 
+    textarea.value = orderText;
 
-    textarea.value =
-        orderText;
+    textarea.style.position = 'fixed';
+    textarea.style.left = '-9999px';
+    textarea.style.top = '0';
+    textarea.style.opacity = '0';
 
-
-    textarea.style.position =
-        'fixed';
-
-    textarea.style.left =
-        '-9999px';
-
-    textarea.style.top =
-        '0';
-
-    textarea.style.opacity =
-        '0';
-
-
-    document.body.appendChild(
-        textarea
-    );
-
+    document.body.appendChild(textarea);
 
     textarea.focus();
-
     textarea.select();
-
 
     try {
 
-        const copied =
-            document.execCommand(
-                'copy'
-            );
+        document.execCommand('copy');
 
-
-        if (copied) {
-
-            showToast(
-                'ORDER COPIED!'
-            );
-
-        } else {
-
-            showToast(
-                'Gagal copy order'
-            );
-
-        }
+        showToast("ORDER COPIED!");
 
     } catch (err) {
 
@@ -1637,20 +1506,12 @@ ${payment}
             err
         );
 
-        showToast(
-            'Gagal copy order'
-        );
-
-    } finally {
-
-        document.body.removeChild(
-            textarea
-        );
+        showToast("Gagal copy order");
 
     }
+
+    document.body.removeChild(textarea);
 }
-
-
 // ============================================================
 // TOAST
 // ============================================================
