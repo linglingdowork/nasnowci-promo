@@ -88,8 +88,8 @@ const database = [
                 '7 DAYS': 5000,
                 '1 MONTH': 6000,
                 '2 MONTHS': 9000,
-                '3 MONTHS': 14000,
-                '4 MONTHS': 16000,
+                '3 MONTHS': 12000,
+                '4 MONTHS': 15000,
                 '5 MONTHS': 18000,
                 '6 MONTHS': 20000,
                 '1 YEAR': 30000
