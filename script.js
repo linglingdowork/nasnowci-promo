@@ -237,7 +237,7 @@ const database = [
         category: 'STREAMING APPS',
         id: 'apple-music',
         name: 'Apple Music',
-        image: 'image/apple.png',
+        image: 'image/apple.jpeg',
         stepLabels: ['Choose your plan', 'Choose duration'],
         data: {
             'INDPLAN': {
