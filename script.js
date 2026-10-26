@@ -403,7 +403,37 @@ const database = [
                 '1 YEAR': 20000
             }
         }
-    }
+    },
+
+    {
+        category: 'BUNDLING APPS',
+        id: 'PAKET NETFLIX + VIU',
+        name: 'Netflix + Viu',
+        image: 'image/netflix.webp',
+        stepLabels: ['Choose your plan', 'Choose duration'],
+        data: {
+            'SHARING': {
+                'NETFLIX 7 DAYS + VIU 1 MONTH': 18000,
+                'NETFLIX & VIU 1 MONTH': 47000,
+                '2 MONTHS': 70000,
+                '3 MONTHS': 110000
+            }
+        }
+    },
+
+    {
+        category: 'BUNDLING APPS',
+        id: 'PAKET ALIGHT MOTION + CAPCUT',
+        name: 'ALIGHT MOTION + CAPCUT',
+        image: 'image/netflix.webp',
+        stepLabels: ['Choose your plan', 'Choose duration'],
+        data: {
+            'PRIVATE': {
+                'CAPCUT 7 DAYS + ALIGHT MOTION1 MONTH': 28000,
+                'CAPCUT & ALIGHT MOTION1 MONTH': 47000
+            }
+        }
+    },
 ];
 
 
