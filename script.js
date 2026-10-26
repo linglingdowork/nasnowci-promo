@@ -425,8 +425,46 @@ const database = [
         stepLabels: ['Choose your plan', 'Choose duration'],
         data: {
             'PRIVATE': {
-                'CAPCUT 7 DAYS + ALIGHT MOTION 1 MONTH': 28000,
-                'CAPCUT & ALIGHT MOTION 1 MONTH': 47000
+                'CAPCUT 7 DAYS + ALIGHT MOTION 1 MONTH': 25000,
+                'CAPCUT & ALIGHT MOTION 1 MONTH': 45000
+            }
+        }
+    },
+
+    {
+        category: 'BUNDLING APPS',
+        id: 'PAKET DISNEY + NETFLIX',
+        name: 'DISNEY + NETFLIX',
+        stepLabels: ['Choose your plan', 'Choose duration'],
+        data: {
+            'SHARING': {
+                'NETFLIX & DISNEY 7 DAYS': 25000,
+                'NETFLIX & DISNEY 1 MONTH': 65000
+            }
+        }
+    },
+
+    {
+        category: 'BUNDLING APPS',
+        id: 'PAKET HBO + VIU',
+        name: 'HBO + VIU',
+        stepLabels: ['Choose your plan', 'Choose duration'],
+        data: {
+            'SHARING': {
+                'HBO + VIU 7 DAYS': 15000,
+                'HBO + VIU 1 MONTH': 24000
+            }
+        }
+    },
+
+    {
+        category: 'BUNDLING APPS',
+        id: 'PAKET PRIME VIDEO + WETV',
+        name: 'PRIME VIDEO + WETV',
+        stepLabels: ['Choose your plan', 'Choose duration'],
+        data: {
+            'SHARING': {
+                'PRIME VIDEO + WETV 1 MONTH': 20000
             }
         }
     },
