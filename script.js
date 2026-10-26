@@ -33,16 +33,16 @@ const database = [
         stepLabels: ['Choose your plan', 'Choose duration'],
         data: {
             'SHARING': {
-                '1 DAY': 3500,
-                '2 DAYS': 5000,
-                '3 DAYS': 7000,
-                '5 DAYS': 9000,
-                '7 DAYS': 12000,
-                '14 DAYS': 20000,
-                '21 DAYS': 30000,
-                '1 MONTH': 39000,
-                '2 MONTHS': 68000,
-                '3 MONTHS': 95000
+                '1 DAY': 4000,
+                '2 DAYS': 6000,
+                '3 DAYS': 9000,
+                '5 DAYS': 12000,
+                '7 DAYS': 15000,
+                '14 DAYS': 26000,
+                '21 DAYS': 36000,
+                '1 MONTH': 45000,
+                '2 MONTHS': 70000,
+                '3 MONTHS': 110000
             },
             'PRIVATE': {
                 '1 MONTH': 165000
